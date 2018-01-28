@@ -1,0 +1,68 @@
+@import '../variables';
+@import '../mixins';
+@import '../common';
+
+.menu {
+  background-color: $color-bg-2;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  transition-duration: .5s;
+  width: 6em;
+  z-index: 5;
+
+  .menu-btn {
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+
+    &::before {
+      @include font-awesome-font;
+      content: $fa-var-navicon;
+      display: block;
+      font-size: 1.2em;
+      margin: 0 auto;
+      padding-top: .5em;
+    }
+
+    span {
+      display: block;
+      font-size: 1.2em;
+      font-weight: 200;
+      margin: 0 auto;
+      padding: .75em 0;
+      text-transform: uppercase;
+    }
+  }
+
+  .items {
+    left: -15em;
+    position: relative;
+    transition-duration: .5s;
+    width: 15em;
+
+    li {
+      @include block-border-box;
+      padding: .2em 2em;
+      width: 100%;
+    }
+  }
+}
+
+.link {
+  color: white;
+  display: inline-block;
+  font-weight: 200;
+  margin: 0 1em;
+  text-align: left;
+  text-decoration: none;
+
+  &::before {
+    @include font-awesome-font;
+    display: inline-block;
+    font-size: 1.5em;
+    padding: .25em .4em .25em 0;
+  }
+}

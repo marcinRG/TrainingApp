@@ -1,0 +1,57 @@
+@import 'variables';
+@import 'mixins';
+@import 'common';
+
+.icon-settings {
+  &::before {
+    content: $fa-var-cogs;
+  }
+}
+
+.icon-achievements {
+  &::before {
+    content: $fa-var-birthday-cake;
+  }
+}
+
+.icon-history {
+  &::before {
+    content: $fa-var-calendar;
+  }
+}
+
+.icon-last-training {
+  &::before {
+    content: $fa-var-tachometer;
+  }
+}
+
+.icon-fiends {
+  &::before {
+    content: $fa-var-users;
+  }
+}
+
+.icon-last-week {
+  &::before {
+    content: $fa-var-pie-chart;
+  }
+}
+
+.icon-ac-1 {
+  &::before {
+    content: $fa-var-certificate;
+  }
+}
+
+.icon-ac-2 {
+  &::before {
+    content: $fa-var-bus;
+  }
+}
+
+.icon-ac-3 {
+  &::before {
+    content: $fa-var-bug;
+  }
+}
