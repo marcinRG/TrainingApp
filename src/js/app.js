@@ -1,5 +1,5 @@
 'use strict';
-var router = require('./components/ObservableRouter');
+var router = require('./services/router.service');
 console.log(router);
 router.addRoute('/last-week');
 router.addRoute('/last-training');

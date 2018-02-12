@@ -2,7 +2,7 @@
 var utils = require('../utils/Observable.utils');
 var Router = require('../utils/Router');
 
-function ObservableRouter() {
+function ObservableRouterService() {
     this.router = new utils.ObservableWrapper(new Router());
     this.intialize = function () {
         utils.extend(this, this.router);
@@ -11,4 +11,4 @@ function ObservableRouter() {
     this.intialize();
 }
 
-module.exports = new ObservableRouter();
+module.exports = new ObservableRouterService();
