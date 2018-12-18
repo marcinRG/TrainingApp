@@ -1,7 +1,7 @@
 'use strict';
 
 function getLastTraining() {
-  return null;
+    return null;
 }
 
 function getLastFiveTrainings() {
@@ -21,9 +21,9 @@ function getFriends() {
 }
 
 module.exports = {
-    getLastTraining:getLastTraining,
-    getLastFiveTrainings:getLastFiveTrainings,
-    getTrainingsFromSelectedPeriodOfTime:getTrainingsFromSelectedPeriodOfTime,
-    getAchivements:getAchivements,
-    getFriends:getFriends
+    getLastTraining: getLastTraining,
+    getLastFiveTrainings: getLastFiveTrainings,
+    getTrainingsFromSelectedPeriodOfTime: getTrainingsFromSelectedPeriodOfTime,
+    getAchivements: getAchivements,
+    getFriends: getFriends
 };
