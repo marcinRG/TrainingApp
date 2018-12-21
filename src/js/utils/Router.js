@@ -1,36 +1,43 @@
 'use strict';
 
-function Router() {
-    this.routes = [];
-    this.routeParams = [];
-    this.selectedRoute = '';
+function Router(routeAndParameterResolver) {
+    var resolver = routeAndParameterResolver;
+    var routeAndParams = {};
 
-    this.getRouteAndParams = function() {
-        var str = window.location.hash.slice(1);
-        this.selectedRoute = this.findRoute(str);
-        this.routeParams = this.findRouteParams(str);
-    };
+    function getDefaultValues() {
+        return {
+            route: resolver.getDefaultRoute(),
+            params: {}
+        };
+    }
 
-    this.findRoute = function(str) {
-        var reqEx = /(\/.*?)(?:\/|$)/;
-        var found = str.match(reqEx);
-        if (found && found.length > 1) {
-            return found[1];
+    function getValuesWhenNotNullArgs(path) {
+        var values = resolver.getRouteAndParameters(path);
+        if (resolver.isRouteValid(values.route)) {
+            return values;
+        } else {
+            return {
+                route: resolver.getErrorRoute(),
+                params: {}
+            };
         }
-    };
+    }
 
-    this.findRouteParams = function(str) {
-        var params = str.split('/');
-        //removes first empty val and route
-        params.shift();
-        params.shift();
-        return params;
-    };
+    function getRouteAndParamsFromString(str) {
+        var path = str.slice(1);
+        if ((path === null) || (path === '')) {
+            return getDefaultValues();
+        } else {
+            if (resolver.isPathValid(path)) {
+                return getValuesWhenNotNullArgs(path);
+            }
+        }
+    }
 
-    this.addRoute = function(routeId) {
-        this.routes.push({
-            routeId: routeId
-        });
+    return {
+        routeAndParams: routeAndParams,
+        getDefaultValues: getDefaultValues,
+        getRouteAndParamsFromString: getRouteAndParamsFromString
     };
 }
 

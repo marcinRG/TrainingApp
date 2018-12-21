@@ -2,13 +2,14 @@
 
 var routeSettings = {
     routes: [
-        '/last-week',
-        '/last-training',
-        '/achievements',
-        '/friends',
-        '/settings'
+        'last-week',
+        'last-training',
+        'achievements',
+        'friends',
+        'settings'
     ],
-    defaultRoute: '/last-training'
+    defaultRoute: 'last-training',
+    errorRoute: 'error'
 };
 
 module.exports = {

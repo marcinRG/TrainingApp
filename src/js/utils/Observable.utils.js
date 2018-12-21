@@ -1,5 +1,11 @@
 'use strict';
 
+function extend(obj, extension) {
+    for (var key in extension) {
+        obj[key] = extension[key];
+    }
+}
+
 function ObserversList() {
     this.observers = [];
 }
@@ -27,12 +33,6 @@ function isFunction(functionToCheck) {
     return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
 }
 
-function extend(obj, extension) {
-    for (var key in extension) {
-        obj[key] = extension[key];
-    }
-}
-
 function addPropertyGetterSetter(propertyName, origin, copy, observerList) {
     Object.defineProperty(copy, propertyName, {
         get: function () {
@@ -45,34 +45,32 @@ function addPropertyGetterSetter(propertyName, origin, copy, observerList) {
     });
 }
 
-function copyFunction(propertyName, origin, copy, observerList) {
-    copy[propertyName] = function (values) {
-        var funcResult = origin[propertyName](values);
-        observerList.notify(origin);
-        return funcResult;
-    };
+function copyFunction(propertyName, origin, copy) {
+    if (origin.hasOwnProperty(propertyName)) {
+        copy[propertyName] = origin[propertyName];
+    }
 }
 
-function ObservableWrapper(origin) {
-    this.originObject = origin;
-    this.observers = new ObserversList();
-    this.observeAllProperties();
-}
-
-ObservableWrapper.prototype.observeAllProperties = function () {
-    for (var name in this.originObject) {
-        if (this.originObject.hasOwnProperty(name)) {
-            if (isFunction(this.originObject[name])) {
-                copyFunction(name, this.originObject, this, this.observers);
+ObservableWrapper.prototype.observeAllProperties = function (origin, wrapper, observerList) {
+    for (var name in origin) {
+        if (origin.hasOwnProperty(name)) {
+            if (isFunction(origin[name])) {
+                copyFunction(name, origin, wrapper);
             } else {
-                addPropertyGetterSetter(name, this.originObject, this, this.observers);
+                addPropertyGetterSetter(name, origin, wrapper, observerList);
             }
         }
     }
 };
 
-ObservableWrapper.prototype.addObserver = function (observer) {
-    this.observers.add(observer);
+function ObservableWrapper(origin) {
+    this.originObject = origin;
+    this.observers = new ObserversList();
+    this.observeAllProperties(this.originObject, this, this.observers);
+}
+
+ObservableWrapper.prototype.addObserver = function (observerlist, observer) {
+    observerlist.add(observer);
 };
 
 module.exports = {
