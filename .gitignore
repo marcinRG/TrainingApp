@@ -1,8 +1,7 @@
 .idea
-_resources
-resources
-nbproject
 .vscode
+bower_components
+resources
 
 ### Node template
 # Logs
@@ -31,9 +30,10 @@ coverage
 .lock-wscript
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
 
 # Dependency directories
+build
+dist
 node_modules
 jspm_packages
 
@@ -42,4 +42,4 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
-/nbproject/private/
+

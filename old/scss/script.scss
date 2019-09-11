@@ -1,0 +1,15 @@
+@import 'variables';
+@import 'mixins';
+@import 'common';
+
+.show {
+
+  .menu {
+    width: 15em;
+    background-color: $color-bg-3;
+  }
+
+  .items {
+    left: 0;
+  }
+}
