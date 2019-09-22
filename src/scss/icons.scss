@@ -1,6 +1,6 @@
-@import 'variables';
-@import 'mixins';
-@import 'common';
+@import './variables';
+@import './mixins';
+@import './common';
 
 .icon-settings {
   &::before {

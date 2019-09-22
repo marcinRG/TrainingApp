@@ -1,5 +1,5 @@
 @import 'libs/fontAwesome/scss/variables';
-$path-fonts: '/fonts/';
+$path-fonts: 'fonts/';
 $path-open-sans: '#{$path-fonts}Open_Sans/';
 $path-font-awesome-fonts: '#{$path-fonts}font-awesome/';
 
@@ -14,6 +14,7 @@ $color-f-7: #8d8d7a;
 $color-bg-1: rgba(0, 0, 0, .5);
 $color-bg-2: rgba(0, 0, 0, .25);
 $color-bg-3: rgba(0, 0, 0, .75);
+$color-bg-4: rgba(0, 0, 0, .1);
 
 $media-br-1: 768px;
 $media-br-2: 992px;

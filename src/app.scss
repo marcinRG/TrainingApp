@@ -1,11 +1,79 @@
-//@import 'scss/variables';
-//@import 'scss/common';
+@import './scss/variables';
+@import './scss/common';
+@import './scss/icons';
 
+@include custom-font-mixin('Font Awesome', 'fontawesome-webfont', 400, normal, $path-font-awesome-fonts);
+@include custom-font-mixin('Open Sans', 'opensans-light', 300, normal, $path-open-sans);
+@include custom-font-mixin('Open Sans', 'opensans-regular', 400, normal, $path-open-sans);
+@include custom-font-mixin('Open Sans', 'opensans-semibold', 600, normal, $path-open-sans);
+@include custom-font-mixin('Open Sans', 'opensans-bold', 700, normal, $path-open-sans);
+@include custom-font-mixin('Open Sans', 'opensans-extrabold', 800, normal, $path-open-sans);
+
+*,
+html,
 body {
-  background-color: magenta;
-  font-size: 12px;
+  @include set-to-zero;
+  @include font-open-sans;
+  box-sizing: border-box;
 }
 
-h1 {
-  background-color: yellow;
+h2 {
+  font-size: 1.2em;
+  text-align: center;
+  color: $color-f-1;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+ul {
+  display: block;
+  list-style-type: none;
+}
+
+body {
+  background-image: url('images/photo-mountains-unsplash.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+  width: 100%;
+
+  &::after {
+    background-color: $color-bg-3;
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.app {
+  position: absolute;
+  z-index: 2;
+  width: 80%;
+  left: 50%;
+  background-color: $color-bg-4;
+  height: 100vh;
+  transform: translateX(-50%);
+}
+
+.container {
+  overflow: hidden;
+  z-index: 3;
+  background-color: $color-bg-1;
+  height: 100%;
+  margin-left: 6em;
+
+  .details {
+    background-color: $color-bg-4;
+    height: 100%;
+    width: 80%;
+    float: right;
+  }
+
+  &::after {
+    clear: both;
+  }
 }
