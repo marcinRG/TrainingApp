@@ -1,0 +1,9 @@
+@import './../../../../scss/variables';
+@import './../../../../scss/mixins';
+@import './../../../../scss/common';
+
+.achievement {
+  @include block-border-box;
+  margin: 0 auto;
+  width: 75%;
+}

@@ -77,3 +77,15 @@ body {
     clear: both;
   }
 }
+
+.page-container {
+  @include block-border-box;
+  padding: 2em 1em;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &::after {
+    clear: both;
+  }
+}

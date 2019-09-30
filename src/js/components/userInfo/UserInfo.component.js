@@ -1,8 +1,8 @@
 import React from 'react';
 import imgPath from './../../../images/client2.jpg';
-import style from './UserInfo.scss';
+import style from './UserInfo.component.scss';
 
-export function UserInfo() {
+export function UserInfoComponent() {
     return <React.Fragment>
         <aside className="user">
             <img className="usr-portrait" src={imgPath} alt="app user"/>
