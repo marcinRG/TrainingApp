@@ -1,79 +1,18 @@
 import React from 'react';
-import style from './FriendsList.component.scss';
+import './FriendsList.component.scss';
 import FriendComponent from './friendItem/Friend.component';
-import img from '../../../images/wat.jpg';
+import {friends} from '../../data/init.data';
 
 export default function FriendsListComponent(props) {
     return (
         <div className="friends-container page-container">
             <h2 className="friends-title">Friends</h2>
             <div className="friends-list">
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
-                <FriendComponent imgPath={img} imgDescription="something"
-                                 userMotto="I can survive a car crash. I might look a little different but I assure you that I'm human."
-                                 userName="Gall Anonim"/>
+                {friends.map((friend, index) =>
+                    <FriendComponent key={index} imgPath={friend.imagePath} userName={friend.nick}
+                                     userDescription={friend.shortDescription}
+                                     achievements={friend.selectedAchievements}/>
+                )}
             </div>
         </div>
     );

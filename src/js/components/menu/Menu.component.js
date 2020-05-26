@@ -1,4 +1,4 @@
-import style from './Menu.component.scss';
+import './Menu.component.scss';
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {LinksConstants} from '../../utilsAndSettings/LinkConstants';

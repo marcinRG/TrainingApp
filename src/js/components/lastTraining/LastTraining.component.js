@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './LastTraining.component.scss';
+import './LastTraining.component.scss';
 
 export default function LastTrainingComponent(props) {
     return (

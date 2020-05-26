@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './History.component.scss';
+import './History.component.scss';
 
 export default function HistoryComponent(props) {
     return (

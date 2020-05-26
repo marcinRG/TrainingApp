@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './LastWeek.component.scss';
+import './LastWeek.component.scss';
 
 export default function LastWeekComponent(props) {
     return (

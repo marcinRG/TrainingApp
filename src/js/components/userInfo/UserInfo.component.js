@@ -1,6 +1,6 @@
 import React from 'react';
 import imgPath from './../../../images/client2.jpg';
-import style from './UserInfo.component.scss';
+import './UserInfo.component.scss';
 
 export function UserInfoComponent() {
     return <React.Fragment>

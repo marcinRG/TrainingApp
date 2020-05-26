@@ -4,5 +4,6 @@ export const LinksConstants = {
     HISTORY: '/history',
     FRIENDS: '/friends',
     ACHIEVEMENTS: '/achievements/',
-    SETTINGS: '/settings'
+    SETTINGS: '/settings',
+    INFO: '/info'
 };
