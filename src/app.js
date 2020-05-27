@@ -1,5 +1,4 @@
-import style from './app.scss';
-
+import './app.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {MenuComponent} from './js/components/menu/Menu.component';
@@ -14,6 +13,8 @@ import AchievementListComponent from './js/components/achievementsList/Achivemen
 import HistoryComponent from './js/components/history/History.component';
 import SettingsComponent from './js/components/settings/Settings.component';
 import {LinksConstants} from './js/utilsAndSettings/LinkConstants';
+import HomePageComponent from './js/components/homePage/HomePage.component';
+import InfoPageComponent from './js/components/infoPage/InfoPage.component';
 
 ReactDOM.render(
     <Provider store={store}>
@@ -23,13 +24,14 @@ ReactDOM.render(
                 <div className="container">
                     <UserInfoComponent/>
                     <div className="details">
-                        <Route exact={true} path="/" component={LastTrainingComponent}/>
+                        <Route exact={true} path="/" component={HomePageComponent}/>
                         <Route path={LinksConstants.LAST_WEEK + '/'} component={LastWeekComponent}/>
                         <Route path={LinksConstants.ACHIEVEMENTS + '/'} component={AchievementListComponent}/>
                         <Route path={LinksConstants.LAST_TRAINING + '/'} component={LastTrainingComponent}/>
                         <Route path={LinksConstants.HISTORY + '/'} component={HistoryComponent}/>
                         <Route path={LinksConstants.FRIENDS + '/'} component={FriendsListComponent}/>
                         <Route path={LinksConstants.SETTINGS + '/'} component={SettingsComponent}/>
+                        <Route path={LinksConstants.INFO + '/'} component={InfoPageComponent}/>
                     </div>
                 </div>
             </React.Fragment>

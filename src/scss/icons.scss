@@ -8,6 +8,31 @@
   }
 }
 
+
+.icon-calendar {
+  &::before {
+    content: $fa-var-calendar;
+  }
+}
+
+.icon-down {
+  &::before {
+    content: $fa-var-caret-down;
+  }
+}
+
+.icon-home-page {
+  &::before {
+    content: $fa-var-home;
+  }
+}
+
+.icon-info {
+  &::before {
+    content: $fa-var-info-circle;
+  }
+}
+
 .icon-achievements {
   &::before {
     content: $fa-var-birthday-cake;

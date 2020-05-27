@@ -1,0 +1,97 @@
+@import '../../../scss/mixins';
+@import '../../../scss/variables';
+
+.datepicker-input {
+  margin: 0 0 1em;
+  position: relative;
+
+  //.input-label {
+  //  @include small-text;
+  //}
+  //
+  //.input-btn {
+  //  @include text-inputs;
+  //  width: 20%;
+  //  margin-bottom: 0;
+  //
+  //  & > span {
+  //    font-size: 10px;
+  //  }
+  //}
+  //
+  //.month-display {
+  //  @include text-inputs;
+  //  display: inline-block;
+  //  text-align: center;
+  //  width: 80%;
+  //  margin-top: 0;
+  //  margin-bottom: 0;
+  //}
+  //
+  //.prev-btn,
+  //.next-btn {
+  //  @include text-inputs;
+  //  width: 10%;
+  //  margin-top: 0;
+  //  margin-bottom: 0;
+  //
+  //  & > span {
+  //    font-size: 10px;
+  //  }
+  //}
+  //
+  //.inputs {
+  //  @include set-to-zero;
+  //  @include block-border-box;
+  //  width: 100%;
+  //}
+  //
+  //.input-field {
+  //  @include text-inputs;
+  //  width: 80%;
+  //  margin-bottom: 0;
+  //}
+  //
+  //.error-msg {
+  //  @include error-inputs;
+  //}
+  //
+  //.date-picker {
+  //  @include set-to-zero;
+  //  @include block-border-box;
+  //  position: absolute;
+  //  background-color: white;
+  //  overflow: hidden;
+  //  height: 0;
+  //  z-index: 10;
+  //  width: 100%;
+  //
+  //}
+  //
+  //.month-selection {
+  //  @include set-to-zero;
+  //  @include block-border-box;
+  //  width: 100%;
+  //}
+  //
+  //.days-table {
+  //  @include set-to-zero;
+  //  box-sizing: border-box;
+  //  width: 100%;
+  //  padding: 2em;
+  //  table-layout: fixed;
+  //  border-collapse: separate;
+  //}
+  //
+  //.cell-header {
+  //  @include header-cell-table;
+  //  border-spacing: 0;
+  //}
+  //
+  //.cell-day {
+  //  @include regular-cell-table;
+  //  border-spacing: 0;
+  //  text-align: center;
+  //}
+
+}
