@@ -1,26 +1,56 @@
 import './ComboBox.component.scss';
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
+import {ComboBoxElementComponent} from './ComboBoxElement.component';
+
 
 export function ComboBoxComponent(props) {
-        return (
-            <div className="combobox-input">
-                <label className="input-label">{props.label}</label>
-                <div className="inputs">
-                    <input type="text" className="input-field"/>
-                    <button className="input-btn"><span className="icon-calendar"></span></button>
-                </div>
-                <ul className="list-of-elements">
-                    <li className="list-element">element 1</li>
-                    <li className="list-element">element 2</li>
-                    <li className="list-element">element 3</li>
-                    <li className="list-element">element 4</li>
-                    <li className="list-element">element 5</li>
-                </ul>
+    const [showMenu, setShowMenu] = useState(false);
+    const [text, setText] = useState('');
+
+    const changeSelectedText = (txt) => {
+        setText(txt);
+        setShowMenu(false);
+    };
+
+    const showItems = () => {
+        setShowMenu(!showMenu);
+    };
+
+    return (
+        <div className="combobox-input">
+            <div className="inputs">
+                <span className='input-text'>{text}</span>
+                <button className="input-btn" onClick={showItems}><span className={setIconClass(showMenu)}></span>
+                </button>
             </div>
-        )
+            <ul className={'list-of-elements'} style={setListStyle(showMenu, props.values)}>
+                {props.values.map((elem, index) =>
+                    <ComboBoxElementComponent key={index} value={elem} action={changeSelectedText}/>)}
+            </ul>
+        </div>)
+}
+
+function setIconClass(rotate) {
+    const iconClass = 'icon icon-direction-down';
+    if (rotate) {
+        return iconClass + ' ' + 'rotate';
+    }
+    return iconClass;
+}
+
+
+function getHeight(array) {
+    return (array.length * 40) + 'px';
+}
+
+function setListStyle(show, array) {
+    if (show) {
+        return {height: getHeight(array)};
+    }
+    return {height: 0};
 }
 
 ComboBoxComponent.propTypes = {
-    label: PropTypes.string.isRequired,
+    values: PropTypes.array.isRequired,
 };

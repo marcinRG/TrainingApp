@@ -5,70 +5,77 @@
 
   margin: 0 0 1em;
   position: relative;
+  width: 300px;
 
-  //
-  //.input-label {
-  //  @include small-text;
-  //}
-  //
-  //.input-btn {
-  //  @include text-inputs;
-  //  margin-bottom: 0;
-  //  width: 20%;
-  //
-  //  & > span {
-  //    font-size: 10px;
-  //  }
-  //
-  //}
-  //
-  //.inputs {
-  //  @include set-to-zero;
-  //  @include block-border-box;
-  //  width: 100%;
-  //}
-  //
-  //.list-of-elements {
-  //  @include shadow-with-focus;
-  //  width: 100%;
-  //  display: block;
-  //  list-style-type: none;
-  //  z-index: 10;
-  //  overflow: hidden;
-  //  height: 0;
-  //  position: absolute;
-  //}
-  //
-  //.list-element {
-  //  display: block;
-  //  background-color: white;
-  //  width: 100%;
-  //  outline: 0;
-  //  color: white;
-  //  font-size: .85em;
-  //  padding: 1.25em .5em;
-  //  font-weight: 400;
-  //  margin: 0;
-  //  border-bottom: 1px solid #CACACA;
-  //
-  //  &:nth-of-type(1) {
-  //    border-top: 1px solid #CACACA;
-  //  }
-  //
-  //  &:hover {
-  //    background-color: magenta;
-  //  }
-  //
-  //}
-  //
-  //.input-field {
-  //  //@include text-inputs;
-  //  width: 80%;
-  //  margin-bottom: 0;
-  //}
-  //
-  //.error-msg {
-  //  //@include error-inputs;
-  //  margin-top: 1em;
-  //}
+  .list-of-elements {
+    width: 100%;
+    display: block;
+    list-style-type: none;
+    z-index: 10;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    transition-duration: .5s;
+    background-color: $color-f-6;
+
+  }
+
+  .list-element {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: .75em;
+    padding: 10px 2px;
+    height: 40px;
+    cursor: pointer;
+    color: black;
+
+    &:hover {
+      background-color: $color-f-7;
+    }
+
+  }
+
+}
+
+.inputs {
+  @include block-border-box;
+  width: 100%;
+  border: 1px solid $color-f-6;
+  height: 30px;
+
+  .input-text {
+    width: 239px;
+    color: $color-f-2;
+    display: inline-block;
+    font-size: .85em;
+    height: 28px;
+    vertical-align: center;
+    line-height: 28px;
+    padding-left: 10px;
+  }
+
+  .input-btn {
+    width: 59px;
+    display: inline-block;
+    background-color: transparent;
+    color: $color-f-2;
+    font-size: .85em;
+    border-radius: 0;
+    outline: 0;
+    height: 28px;
+    vertical-align: top;
+    line-height: 28px;
+    border-left: 1px solid $color-f-6;
+
+    .icon {
+      display: block;
+      transition-duration: .5s;
+
+      &.rotate {
+        transform: rotateZ(180deg);
+      }
+    }
+
+  }
 }

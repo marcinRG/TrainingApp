@@ -2,7 +2,7 @@
   "name": "trainingapp",
   "version": "1.0.0",
   "description": "",
-  "main": "gulpfile.js",
+  "main": "index.js",
   "scripts": {
     "webpack-prod": "webpack --mode production --config webpack.prod.js",
     "dev-server": "webpack-dev-server --config webpack.dev.js"

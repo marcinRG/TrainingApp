@@ -2,12 +2,33 @@
 @import './mixins';
 @import './common';
 
+.icon {
+  @include font-awesome-font;
+}
+
 .icon-settings {
   &::before {
     content: $fa-var-cogs;
   }
 }
 
+.icon-direction-down {
+  &::before {
+    content: $fa-var-chevron-down;
+  }
+}
+
+.icon-direction-left {
+  &::before {
+    content: $fa-var-chevron-left;
+  }
+}
+
+.icon-direction-right {
+  &::before {
+    content: $fa-var-chevron-right;
+  }
+}
 
 .icon-calendar {
   &::before {

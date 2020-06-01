@@ -3,21 +3,14 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 export function DatePickerComponent(props) {
-        return (
-            <div className="datepicker-input">
-                <label className="input-label">{props.label}</label>
-                <div className="inputs">
-                    <input type="text" className="input-field"/>
-                    <button className="input-btn"><span>{/*&#128198;*/}
-                    </span>
-                    </button>
-                </div>
+    return (
+        <div className="datepicker-input">
+            <div className={'left-panel'}>
+                <span className={'icon icon-direction-left'}></span>
+            </div>
+            <div className={'center-panel'}>
                 <div className="date-picker">
-                    <div className="month-selection">
-                        {/*<button className="prev-btn"><span>&#9664;</span></button>*/}
-                        <span className="month-display">kwiecień 2020</span>
-                        {/*<button className="next-btn"><span> &#9658;</span></button>*/}
-                    </div>
+                    <div className="month-display">kwiecień 2020</div>
                     <table className="days-table">
                         <thead>
                         <tr>
@@ -88,8 +81,16 @@ export function DatePickerComponent(props) {
                         </tbody>
                     </table>
                 </div>
+                {/*<div className="date-picker">*/}
+
+
+                {/*</div>*/}
             </div>
-        )
+            <div className={'right-panel'}>
+                <span className={'icon icon-direction-right'}></span>
+            </div>
+        </div>
+    )
 }
 
 DatePickerComponent.propTypes = {

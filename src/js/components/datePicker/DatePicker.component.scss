@@ -2,8 +2,89 @@
 @import '../../../scss/variables';
 
 .datepicker-input {
-  margin: 0 0 1em;
   position: relative;
+  overflow: hidden;
+  height: 500px;
+  width: 620px;
+  display: block;
+  margin: 0 auto;
+
+
+  &::after {
+    clear: both;
+  }
+
+
+  .left-panel,
+  .right-panel {
+    width: 60px;
+    height: 100%;
+    position: relative;
+
+    .icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+      color: $color-f-2;
+    }
+  }
+
+
+  .left-panel {
+    float: left;
+  }
+
+  .right-panel {
+    float: right;
+  }
+
+  .center-panel {
+    @include block-border-box;
+    width: 500px;
+    height: 100%;
+    float: left;
+    border-bottom: 1px solid $color-f-2;
+  }
+
+  .month-display {
+    box-sizing: border-box;
+    display: inline-block;
+    line-height: 60px;
+    height: 60px;
+    vertical-align: center;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    background-color: $color-f-2;
+  }
+
+  .days-table {
+    @include set-to-zero;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1em;
+    table-layout: fixed;
+    border-collapse: separate;
+  }
+
+  .cell-header {
+    border-spacing: 0;
+    height: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: $color-f-3;
+  }
+
+  .cell-day {
+    border-spacing: 0;
+    text-align: center;
+    vertical-align: center;
+    height: 60px;
+    color: $color-f-2;
+  }
+
 
   //.input-label {
   //  @include small-text;
