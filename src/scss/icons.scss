@@ -6,6 +6,18 @@
   @include font-awesome-font;
 }
 
+.icon-sign-out {
+  &::before {
+    content: $fa-var-sign-out;
+  }
+}
+
+.icon-sign-in {
+  &::before {
+    content: $fa-var-sign-in;
+  }
+}
+
 .icon-settings {
   &::before {
     content: $fa-var-cogs;

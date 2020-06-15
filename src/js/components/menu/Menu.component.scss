@@ -72,6 +72,7 @@
     margin: 0 1em;
     text-align: left;
     text-decoration: none;
+    cursor: pointer;
 
     &::before {
       @include font-awesome-font;

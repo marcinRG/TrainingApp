@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import imgPath from './../../../images/client2.jpg';
 import './UserInfo.component.scss';
+import {AuthContext} from '../../appContext/AuthContext';
 
 export function UserInfoComponent() {
+
+    const authContext = useContext(AuthContext);
+
     return <React.Fragment>
+        {authContext.isAuthenticated &&
         <aside className="user">
             <img className="usr-portrait" src={imgPath} alt="app user"/>
             <h2 className="usr-title">Graham Doe</h2>
@@ -15,5 +20,7 @@ export function UserInfoComponent() {
                 <li className="small-achievement icon-ac-3"></li>
             </ul>
         </aside>
+        }
+
     </React.Fragment>
 }
