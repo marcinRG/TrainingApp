@@ -9,21 +9,33 @@ export function AuthProvider(props) {
     const [isAuthenticated, setAuthentication] = useState(true);
 
     useEffect(() => {
-        console.log('useEffect()');
         firebaseAuth.getUser().then((user) => {
-           setUser(user);
+            if (user) {
+                setAuthentication(true);
+            }
         });
     });
 
+    const logIn = (email,password) => {
+        firebaseAuth.signIn(email, password).then(
+            (userCredential) => {
+                setUser({
+                   uid: userCredential.user.uid,
+                   email: userCredential.user.email
+                });
+            }
+        );
+    }
 
     const logOut = () => {
-        console.log('log out');
-        setUser(null);
-        setAuthentication(false);
+        firebaseAuth.signOut().then(()=>{
+            setUser(null);
+            setAuthentication(false);
+        });
     }
 
     return (
-        <AuthContext.Provider value={{user, isAuthenticated, logOut}}>
+        <AuthContext.Provider value={{user, isAuthenticated, logOut, logIn}}>
             {props.children}
         </AuthContext.Provider>
     )
