@@ -21,9 +21,9 @@ class FirebaseAuth {
 
     getUser() {
         return new Promise((resolve) => {
-            auth.onAuthStateChanged((currentUser) => {
-                resolve(currentUser);
-            })
+            if (auth.currentUser) {
+                resolve(auth.currentUser);
+            }
         });
     }
 }

@@ -16,7 +16,6 @@ export function MenuComponent() {
         <nav className={setClassName(menuVisible)}>
             <button className="menu-btn" onClick={() => {setVisible(!menuVisible);}}><span>Menu</span></button>
             <ul className="items">
-
                 <li><Link to={'/'} className="link icon-home-page">Home page</Link></li>
                 <li><Link to={LinksConstants.LAST_TRAINING} className="link icon-last-training">Last training</Link></li>
                 <li><Link to={LinksConstants.LAST_WEEK} className="link icon-last-week">Last week</Link></li>

@@ -7,7 +7,6 @@ const textArray = ['lorem ipsum','excelcior zexes','costam costam', 'dodatkowy e
 export default function TrainingDetailsComponent(props) {
     return (
         <div className="training-details-component">
-            Training details
             <ComboBoxComponent values={textArray} />
         </div>
     );

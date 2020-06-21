@@ -6,7 +6,10 @@ export default function LastTrainingComponent(props) {
     return (
         <div className="last-training-container page-container">
             <h2 className="last-training-title">Last training</h2>
-            <TrainingDetailsComponent/>
+            <div className="combobox-input-wrapper">
+                <TrainingDetailsComponent/>
+            </div>
+
         </div>
     );
 }

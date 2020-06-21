@@ -5,37 +5,48 @@ import {firebaseAuth} from '../data/firebase.auth';
 export const AuthContext = React.createContext(null);
 
 export function AuthProvider(props) {
-    const [user, setUser] = useState(null);
-    const [isAuthenticated, setAuthentication] = useState(true);
+    const [user, setUser] = useState({uid: '', email: ''});
+
+    const isAuthenticated = () => {
+        return (user.uid !== '' && user.email !== '');
+    }
 
     useEffect(() => {
-        firebaseAuth.getUser().then((user) => {
-            if (user) {
-                setAuthentication(true);
+        firebaseAuth.getUser().then((dbUser) => {
+            if (dbUser) {
+                setUser({
+                    uid: dbUser.uid,
+                    email: dbUser.email
+                });
             }
         });
-    });
+    }, [user.uid]);
 
-    const logIn = (email,password) => {
+    const logIn = (email, password) => {
         firebaseAuth.signIn(email, password).then(
             (userCredential) => {
                 setUser({
-                   uid: userCredential.user.uid,
-                   email: userCredential.user.email
+                    uid: userCredential.user.uid,
+                    email: userCredential.user.email
                 });
             }
         );
     }
 
+    const registerUser = (email, password) => {
+        firebaseAuth.createUserAccount(email, password).then(() => {
+            console.log('user created');
+        });
+    }
+
     const logOut = () => {
-        firebaseAuth.signOut().then(()=>{
-            setUser(null);
-            setAuthentication(false);
+        firebaseAuth.signOut().then(() => {
+            setUser({uid: '', email: ''});
         });
     }
 
     return (
-        <AuthContext.Provider value={{user, isAuthenticated, logOut, logIn}}>
+        <AuthContext.Provider value={{user, isAuthenticated, logOut, logIn, registerUser}}>
             {props.children}
         </AuthContext.Provider>
     )

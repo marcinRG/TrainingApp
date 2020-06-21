@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react';
 import './LoginRegister.component.scss';
 import {AuthContext} from '../../appContext/AuthContext';
+import {changeData} from '../../utilsAndSettings/utils';
 
 
 export function LoginRegisterComponent() {
@@ -22,11 +23,11 @@ export function LoginRegisterComponent() {
     }
 
     const changeEmail = (event) => {
-        changeLoginData('email', event.target.value);
+        changeData('email', event.target.value, loginData, setLoginData);
     }
 
     const changePassword = (event) => {
-        changeLoginData('password', event.target.value);
+        changeData('password', event.target.value, loginData, setLoginData);
     }
 
     const changeRepeatedPassword = (event) => {
@@ -39,7 +40,7 @@ export function LoginRegisterComponent() {
             authContext.logIn(loginData.email, loginData.password);
         }
         if (!showLogin && (loginData.password === loginData.repeatedPassword)) {
-            console.log('registration not enabled');
+            authContext.registerUser(loginData.email, loginData.password);
         }
     }
 

@@ -7,4 +7,71 @@
   .settings-title {
     margin-bottom: 2em;
   }
+
+  .settings-wrapper {
+    width: 800px;
+    margin: 0 auto;
+  }
+
+  .settings-subtitle {
+    color: #e9ac8f;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: .95em;
+    margin: 1em 0;
+
+  }
+
+  .user-setting-form {
+    margin: 0 auto 3em;
+    width: 100%;
+    background-color: rgba(6, 6, 7, .45);
+    border-top: 3px solid #b88a73;
+    padding: 30px 0 40px;
+  }
+
+  .settings-form-input {
+    width: 100%;
+    display: inline-block;
+    height: 40px;
+    color: #eac99f;
+    line-height: 35px;
+    background-color: rgba(209, 213, 253, .2);
+    margin-bottom: 1.4em;
+    margin-top: 4px;
+    vertical-align: center;
+    padding-left: 20px;
+    font-size: .85em;
+
+    &.area {
+      height: 200px;
+    }
+
+  }
+
+  .settings-form-label {
+    width: 100%;
+    display: inline-block;
+    color: #eac99f;
+    font-size: .75em;
+    padding-left: 20px;
+  }
+
+  .settings-form-button {
+    border: 2px solid #e9ac8f;
+    border-radius: 20px;
+    padding: 1em 4em;
+    text-transform: uppercase;
+    color: #e9ac8f;
+    font-weight: bolder;
+    background-color: transparent;
+    margin: 2em 20px 2em 0;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .settings-form-button-wrapper {
+    text-align: right;
+  }
+
 }

@@ -1,7 +1,5 @@
 import React, {useContext} from 'react';
-import {HashRouter as Router, Route} from 'react-router-dom';
-import {MenuComponent} from '../menu/Menu.component';
-import {UserInfoComponent} from '../userInfo/UserInfo.component';
+import {Route} from 'react-router-dom';
 import HomePageComponent from '../homePage/HomePage.component';
 import {LinksConstants} from '../../utilsAndSettings/LinkConstants';
 import LastWeekComponent from '../lastWeek/LastWeek.component';
@@ -11,7 +9,7 @@ import HistoryComponent from '../history/History.component';
 import FriendsListComponent from '../friendsList/FriendsList.component';
 import SettingsComponent from '../settings/Settings.component';
 import InfoPageComponent from '../infoPage/InfoPage.component';
-import {AuthContext, AuthProvider} from '../../appContext/AuthContext';
+import {AuthContext} from '../../appContext/AuthContext';
 import {LoginRegisterComponent} from '../loginRegister/LoginRegister.component';
 
 export function AppRoutesComponent(props) {
@@ -20,7 +18,7 @@ export function AppRoutesComponent(props) {
 
     return (
         <div className="details">
-            {authContext.isAuthenticated ?
+            {authContext.isAuthenticated() ?
                 <React.Fragment>
                     <Route exact={true} path="/" component={HomePageComponent}/>
                     <Route path={LinksConstants.LAST_WEEK + '/'} component={LastWeekComponent}/>

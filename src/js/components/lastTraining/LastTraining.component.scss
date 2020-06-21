@@ -7,4 +7,21 @@
   .last-training-title {
     margin-bottom: 2em;
   }
+
+  .combobox-input-wrapper {
+    width: 80%;
+    margin: 0 auto;
+
+    &:after {
+      clear: both;
+    }
+
+    .training-details-component {
+      float: right;
+    }
+
+  }
+
+
+
 }
