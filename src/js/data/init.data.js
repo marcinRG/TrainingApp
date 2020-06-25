@@ -21,15 +21,15 @@ export const friends = [
         selectedAchievements: [
             {
                 title: 'Something',
-                imagePath:imgA01,
+                imagePath: imgA01,
             },
             {
                 title: 'Something',
-                imagePath:imgA07,
+                imagePath: imgA07,
             },
             {
                 title: 'Something',
-                imagePath:imgA04,
+                imagePath: imgA04,
             },
         ]
     },
@@ -40,15 +40,15 @@ export const friends = [
         selectedAchievements: [
             {
                 title: 'Something',
-                imagePath:imgA05,
+                imagePath: imgA05,
             },
             {
                 title: 'Something',
-                imagePath:imgA04,
+                imagePath: imgA04,
             },
             {
                 title: 'Something',
-                imagePath:imgA03,
+                imagePath: imgA03,
             },
         ]
     },
@@ -59,15 +59,15 @@ export const friends = [
         selectedAchievements: [
             {
                 title: 'Something',
-                imagePath:imgA07,
+                imagePath: imgA07,
             },
             {
                 title: 'Something',
-                imagePath:imgA05,
+                imagePath: imgA05,
             },
             {
                 title: 'Something',
-                imagePath:imgA03,
+                imagePath: imgA03,
             },
         ]
     },
@@ -78,15 +78,15 @@ export const friends = [
         selectedAchievements: [
             {
                 title: 'Something',
-                imagePath:imgA02,
+                imagePath: imgA02,
             },
             {
                 title: 'Something',
-                imagePath:imgA04,
+                imagePath: imgA04,
             },
             {
                 title: 'Something',
-                imagePath:imgA06,
+                imagePath: imgA06,
             },
         ]
     },
@@ -97,63 +97,17 @@ export const friends = [
         selectedAchievements: [
             {
                 title: 'Something',
-                imagePath:imgA07,
+                imagePath: imgA07,
             },
             {
                 title: 'Something',
-                imagePath:imgA06,
+                imagePath: imgA06,
             },
             {
                 title: 'Something',
-                imagePath:imgA05,
+                imagePath: imgA05,
             },
         ]
     },
 ]
 
-export const achievements = [
-    {
-        date: '2020-05-11',
-        description: 'Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque',
-        imagePath: imgA01,
-        name: 'Something something'
-    },
-
-    {
-        date: '2019-04-22',
-        description: 'Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque',
-        imagePath: imgA02,
-        name: 'Something something'
-    },
-    {
-        date: '2012-09-23',
-        description: 'Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque',
-        imagePath: imgA03,
-        name: 'Something something'
-    },
-    {
-        date: '2016-06-22',
-        description: 'Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque',
-        imagePath: imgA04,
-        name: 'Something something'
-    },
-    {
-        date: '2020-05-11',
-        description: 'Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque',
-        imagePath: imgA05,
-        name: 'Something something'
-    },
-    {
-        date: '2020-05-11',
-        description: 'Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque',
-        imagePath: imgA06,
-        name: 'Something something'
-    },
-    {
-        date: '2020-05-11',
-        description: 'Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque',
-        imagePath: imgA07,
-        name: 'Something something'
-    }
-
-]

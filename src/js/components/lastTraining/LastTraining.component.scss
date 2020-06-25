@@ -12,16 +12,12 @@
     width: 80%;
     margin: 0 auto;
 
-    &:after {
+    &::after {
       clear: both;
     }
 
     .training-details-component {
       float: right;
     }
-
   }
-
-
-
 }

@@ -8,12 +8,31 @@
   width: 80%;
   position: relative;
   //border: 1px solid $color-f-1;
-  padding: 1em 0 1em 95px;
+  padding: 1em 65px 1em 95px;
 
   .achievement-name {
     text-transform: uppercase;
     color: $color-f-1;
     font-weight: 600;
+  }
+
+  .select-wrapper {
+    @include block-border-box;
+    position: absolute;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    span {
+      color: #b88a73;
+      font-size: 20px;
+      font-weight: bold;
+      display: inline-block;
+      padding: 20px;
+    }
+
   }
 
   .icon-wrapper {
@@ -34,7 +53,6 @@
       margin-left: 12px;
       filter: invert(65%) sepia(43%) saturate(311%) hue-rotate(334deg) brightness(96%) contrast(87%);
     }
-
   }
 
   .achievement-description {

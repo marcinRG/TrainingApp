@@ -1,0 +1,31 @@
+@import './../../../../scss/variables';
+@import './../../../../scss/mixins';
+@import './../../../../scss/common';
+
+.achievement-small {
+  display: inline-block;
+  padding: 10px;
+
+  &.big {
+    .image-achievement {
+      width: 40px;
+      height: 40px;
+      filter: invert(65%) sepia(43%) saturate(311%) hue-rotate(334deg) brightness(96%) contrast(87%);
+    }
+
+    .achievement-name {
+      font-size: .75em;
+      font-weight: normal;
+      color: #eac99f;
+    }
+  }
+
+  .image-achievement {
+    width: 30px;
+    height: 30px;
+    filter: invert(65%) sepia(43%) saturate(311%) hue-rotate(334deg) brightness(96%) contrast(87%);
+  }
+
+
+
+}

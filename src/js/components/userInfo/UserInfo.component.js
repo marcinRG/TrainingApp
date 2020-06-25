@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import './UserInfo.component.scss';
 import {AuthContext} from '../../appContext/AuthContext';
 import {UserDetailContext} from '../../appContext/UserDetailsContext';
+import AchievementSmallComponent from '../achievementsList/AchievementSmall/AchievementSmall.component';
 
 export function UserInfoComponent() {
 
@@ -15,12 +16,11 @@ export function UserInfoComponent() {
             <h2 className="usr-title">{userDetailsContext.userDetails.name}</h2>
             <p className="usr-desc">{userDetailsContext.userDetails.motto}</p>
             <ul className="achievement-selected">
-                <li className="small-achievement icon-ac-1"></li>
-                <li className="small-achievement icon-ac-2"></li>
-                <li className="small-achievement icon-ac-3"></li>
+                {userDetailsContext.userDetails.selectedAchievements.map((elem, index) =>
+                    <AchievementSmallComponent key={index} achievementId={elem} />
+                )}
             </ul>
         </aside>
         }
-
     </React.Fragment>
 }

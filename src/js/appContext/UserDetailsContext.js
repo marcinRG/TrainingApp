@@ -12,7 +12,8 @@ export function UserDetailsProvider(props) {
     const [userDetails, setUserDetails] = useState({
         name: '',
         motto: '',
-        imageURL: ''
+        imageURL: '',
+        selectedAchievements: ['a01', 'a13', 'a29']
     });
 
     const changeName = (name) => {
@@ -44,14 +45,15 @@ export function UserDetailsProvider(props) {
         if (userAuth.isAuthenticated()) {
             firebaseDatabase.getUserDetails(userAuth.user.uid).then((userDbDetails) => {
                 if (userDbDetails) {
-                    setUserDetails({...userDbDetails});
+                    setUserDetails({...userDbDetails, selectedAchievements: ['a01', 'a13', 'a29']});
                 }
             });
         } else {
             setUserDetails({
                 name: '',
                 motto: '',
-                imageURL: ''
+                imageURL: '',
+                selectedAchievements: []
             });
         }
     }, [userAuth.user.uid]);

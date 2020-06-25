@@ -1,4 +1,4 @@
-import './HomePage.component.scss';
+//import './HomePage.component.scss';
 import React from 'react';
 
 export default function HomePageComponent(props) {

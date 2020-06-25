@@ -6,6 +6,18 @@
   @include font-awesome-font;
 }
 
+.icon-checked {
+  &::before {
+    content: $fa-var-check-square-o;
+  }
+}
+
+.icon-unchecked {
+  &::before {
+    content: $fa-var-square-o;
+  }
+}
+
 .icon-sign-out {
   &::before {
     content: $fa-var-sign-out;

@@ -8,4 +8,36 @@
     margin-bottom: 2em;
   }
 
+  .button-wrapper {
+    text-align: center;
+  }
+
+  .selected-achievements-wrapper {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .achievements-subtitle {
+    color: #eac99f;
+    font-size: 1em;
+    font-weight: normal;
+    padding-left: 20px;
+  }
+
+  .button {
+    display: inline-block;
+    border: 2px solid #e9ac8f;
+    border-radius: 20px;
+    padding: 1em 5em;
+    text-transform: uppercase;
+    color: #e9ac8f;
+    font-weight: bolder;
+    background-color: transparent;
+    margin: 1em 0 70px 20px;
+    cursor: pointer;
+  }
+
 }
