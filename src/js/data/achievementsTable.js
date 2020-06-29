@@ -196,5 +196,4 @@ export const achievementsTable = {
         title: 'Achievement Title',
         description: 'Achievement description'
     },
-
 };
