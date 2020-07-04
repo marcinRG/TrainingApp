@@ -7,4 +7,58 @@
   .friends-title {
     margin-bottom: 2em;
   }
+
+  .search-wrapper {
+    width: 100%;
+    display: none;
+
+    &.visible {
+      display: block;
+    }
+  }
+
+  .button {
+    @include button-template;
+  }
+
+  .search-friend-form {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .input-text {
+    @include input-template;
+    background-color: rgba(209, 213, 253, .2);
+    width: 77%;
+    padding-left: 5px;
+  }
+
+  .search-results {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+
+
+  .button-wrapper {
+    width: 80%;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+
+    &.search-results {
+      text-align: right;
+    }
+
+  }
+
+  .friends-list {
+    overflow: hidden;
+
+    &::after {
+      clear: both;
+    }
+  }
+
 }

@@ -23,15 +23,7 @@
   }
 
   .login-register-button {
-    border: 2px solid #e9ac8f;
-    border-radius: 20px;
-    padding: 1em 5em;
-    text-transform: uppercase;
-    color: #e9ac8f;
-    font-weight: bolder;
-    background-color: transparent;
-    margin: 1em 0 90px 20px;
-    cursor: pointer;
+    @include  button-template;
   }
 
 }
@@ -69,13 +61,8 @@
   }
 
   .input-text {
-    display: inline-block;
-    height: 40px;
-    line-height: 35px;
-    background-color: transparent;
-    color: #eac99f;
+    @include input-template;
     width: 65%;
-    vertical-align: center;
   }
 
 }

@@ -2,12 +2,143 @@
 @import './../../../../scss/mixins';
 @import './../../../../scss/common';
 
+.editable,
+.search-results {
+  .friend {
+    width: 70%;
+    margin: 0 auto 1em;
+    float: unset;
+
+    .title-description-wrapper {
+      vertical-align: top;
+      display: inline-block;
+      height: 150px;
+      width: 400px;
+      overflow: hidden;
+    }
+
+    .friend-title {
+      width: 100%;
+      padding: .5em 0 .5em 40px;
+      font-size: 1.2em;
+      text-align: left;
+      color: $color-f-1;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .friend-description {
+      @include block-border-box;
+      padding: 0 40px;
+      width: 100%;
+      text-align: justify;
+      letter-spacing: 1px;
+      line-height: 2em;
+      color: $color-f-6;
+      font-size: .8em;
+    }
+
+    .achievement-selected {
+      display: none;
+    }
+
+    .portrait-wrapper {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      display: inline-block;
+
+      .friend-portrait {
+        display: inline-block;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 0;
+      }
+    }
+  }
+
+  .button-remove,
+  .button-add,
+  .button-down,
+  .button-up {
+    @include small-button-template;
+  }
+
+  .button-remove,
+  .button-add {
+    top: 0;
+    left: 0;
+  }
+
+}
+
+.editable {
+  .button-remove {
+    display: block;
+
+    &::before {
+      content: $fa-var-minus-square;
+    }
+  }
+
+  .button-add {
+    display: none;
+  }
+
+  .button-up {
+    display: block;
+    top: 0;
+    right: 0;
+
+    &::before {
+      content: $fa-var-caret-square-o-up;
+    }
+
+  }
+
+  .button-down {
+    display: block;
+    right: 0;
+    bottom: 0;
+
+    &::before {
+      content: $fa-var-caret-square-o-down;
+    }
+
+  }
+}
+
+.search-results {
+  .button-add {
+    display: block;
+
+    &::before {
+      content: $fa-var-plus-square;
+    }
+  }
+
+  .button-remove {
+    display: none;
+  }
+
+  .button-down {
+    display: none;
+  }
+
+  .button-up {
+    display: none;
+  }
+
+}
+
 .friend {
   @include block-border-box;
   float: left;
   width: 33.333%;
   padding: 0 1em;
   margin-bottom: 1em;
+
 
   .friend-portrait {
     display: block;
@@ -38,6 +169,11 @@
     font-size: .8em;
   }
 
+  .title-description-wrapper {
+    width: 100%;
+    display: block;
+  }
+
   .achievement-selected {
     text-align: center;
     padding: 3.5em 0;
@@ -61,6 +197,13 @@
       display: block;
       width: 30px;
     }
-
   }
 }
+
+.button-remove,
+.button-add,
+.button-down,
+.button-up {
+  display: none;
+}
+

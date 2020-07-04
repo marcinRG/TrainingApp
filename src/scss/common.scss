@@ -10,3 +10,38 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+@mixin  button-template {
+  display: inline-block;
+  border: 2px solid #e9ac8f;
+  border-radius: 20px;
+  padding: 1em 5em;
+  text-transform: uppercase;
+  color: #e9ac8f;
+  font-weight: bolder;
+  background-color: transparent;
+  margin: 1em 0 70px 20px;
+  cursor: pointer;
+}
+
+
+@mixin input-template {
+  display: inline-block;
+  height: 40px;
+  line-height: 35px;
+  background-color: transparent;
+  color: #eac99f;
+  vertical-align: center;
+}
+
+@mixin small-button-template {
+  @include font-awesome-font;
+  background-color: transparent;
+  display: block;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  color: $color-f-1;
+  cursor: pointer;
+  font-size: 1.5em;
+}
+
