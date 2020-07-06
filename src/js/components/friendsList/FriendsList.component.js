@@ -29,6 +29,10 @@ export default function FriendsListComponent(props) {
         setUserSearchResults(newState);
     }
 
+    const saveInDataBase = () => {
+        console.log('save in database');
+    }
+
     const changeShowSearch = (event) => {
         setEnableEdit(!enableEdit);
     };
@@ -104,7 +108,7 @@ export default function FriendsListComponent(props) {
                 )}
             </div>
             <div className="button-wrapper summary">
-                <button className="button">save to database</button>
+                {enableEdit && <button className="button" onClick={saveInDataBase}>save to database</button>}
             </div>
         </div>
     );

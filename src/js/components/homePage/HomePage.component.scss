@@ -2,6 +2,14 @@
 @import './../../../scss/mixins';
 @import './../../../scss/common';
 
-//.home-container {
-//
-//}
+.home-container {
+  .temp-form {
+    background-color: magenta;
+    width: 100%;
+
+    input {
+      height: 3em;
+      width: 100%;
+    }
+  }
+}

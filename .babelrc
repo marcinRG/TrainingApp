@@ -5,7 +5,7 @@
       {
         "useBuiltIns": "entry",
         "targets": "> 0.25%, not dead",
-        "corejs": "3.0.0"
+        "corejs": "3.0.0",
       }
     ],
     "@babel/preset-react"

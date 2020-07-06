@@ -13,7 +13,7 @@ export default function AchievementComponent(props) {
             <div className="icon-wrapper"><img src={achievementData.imagePath} alt={achievementData.title}/></div>
             <div className="description-wrapper">
                 <h3 className="achievement-name">{achievementData.title}</h3>
-                <p className="achievement-date">{getDateString(props.date, '.')}</p>
+                <p className="achievement-date">{props.date}</p>
                 <p className="achievement-description">{achievementData.description}</p>
             </div>
             {props.showEdit &&
@@ -29,7 +29,7 @@ AchievementComponent.propTypes = {
     selected: PropTypes.bool,
     date: PropTypes.string.isRequired,
     showEdit: PropTypes.bool.isRequired,
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     changeCheckedAction: PropTypes.func.isRequired
 };
 
@@ -41,16 +41,3 @@ function setCheckedClass(checked) {
     return className + ' icon-unchecked';
 }
 
-function getDateString(dateAsString, separator) {
-    if (validDate(dateAsString)) {
-        const newDate = new Date(dateAsString);
-        const year = new Intl.DateTimeFormat('en', {year: 'numeric'}).format(newDate);
-        const month = new Intl.DateTimeFormat('en', {month: '2-digit'}).format(newDate);
-        const day = new Intl.DateTimeFormat('en', {day: '2-digit'}).format(newDate);
-        return `${year}${separator}${month}${separator}${day}`;
-    }
-}
-
-function validDate(dateAsString) {
-    return (dateAsString && Date.parse(dateAsString) !== Number.NaN);
-}

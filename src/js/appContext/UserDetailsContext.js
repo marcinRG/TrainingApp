@@ -13,7 +13,7 @@ export function UserDetailsProvider(props) {
         name: '',
         motto: '',
         imageURL: '',
-        selectedAchievements: ['a01', 'a13', 'a29']
+        selectedAchievements: []
     });
 
     const changeName = (name) => {
@@ -45,7 +45,11 @@ export function UserDetailsProvider(props) {
         if (userAuth.isAuthenticated()) {
             firebaseDatabase.getUserDetails(userAuth.user.uid).then((userDbDetails) => {
                 if (userDbDetails) {
-                    setUserDetails({...userDbDetails, selectedAchievements: ['a01', 'a13', 'a29']});
+                    const achievementTable = userDbDetails.selectedAchievements ? userDbDetails.selectedAchievements.values() : [];
+                    setUserDetails({
+                        ...userDbDetails,
+                        selectedAchievements: achievementTable
+                    });
                 }
             });
         } else {

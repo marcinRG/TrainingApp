@@ -1,77 +1,46 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import './AchievementList.component.scss';
 import AchievementComponent from './AchievementItem/Achievement.component';
 import AchievementSmallComponent from './AchievementSmall/AchievementSmall.component';
+import {AuthContext} from '../../appContext/AuthContext';
+import {firebaseDatabase} from '../../data/firebase.database';
 
 const maxNumberOfSelectedAchievements = 3;
 export default function AchievementListComponent(props) {
+    const userAuth = useContext(AuthContext);
     const [editSelected, setEditSelected] = useState(false);
-    const [achievements, setAchievements] = useState([
-        {
-            date: '2020-05-11',
-            achievementID: 'a01',
-            selected: true,
-        },
+    const [achievements, setAchievements] = useState({});
 
-        {
-            date: '2019-04-22',
-            achievementID: 'a30',
-            selected: false
-        },
-        {
-            date: '2012-09-23',
-            achievementID: 'a18',
-            selected: true
-        },
-        {
-            date: '2016-06-22',
-            achievementID: 'a28',
-            selected: false
-        },
-        {
-            date: '2020-05-11',
-            achievementID: 'a08',
-            selected: true
-        },
-        {
-            date: '2020-05-11',
-            achievementID: 'a12',
-            selected: false
-        },
-        {
-            date: '2020-05-11',
-            achievementID: 'a23',
-            selected: false
+    useEffect(()=>{
+        console.log('use Effect');
+        if (userAuth.user.uid) {
+            firebaseDatabase.getUserAchievements(userAuth.user.uid).then((achievementsObject)=>{
+                setAchievements(achievementsObject);
+            });
         }
-
-    ]);
+    },[]);
 
     const changeCheckedElem = (id) => {
-        const newState = [...achievements];
+        const newState = {...achievements};
         if (achievements[id].selected === true) {
             newState[id].selected = !achievements[id].selected;
-
         } else {
-            if (countSelectedAchievements(achievements) >= maxNumberOfSelectedAchievements) {
-                const first = getFirstSelected(achievements);
-                if (first >= 0) {
-                    newState[first].selected = false;
-                }
+             if (countSelectedAchievements(achievements) >= maxNumberOfSelectedAchievements) {
+                 const first = getFirstSelected(achievements);
+                 if (first) {
+                     newState[first].selected = false;
+                 }
             }
             newState[id].selected = true;
         }
         setAchievements(newState);
     }
 
-
     const changeSetSelected = () => {
         setEditSelected(!editSelected);
     }
 
-    // useEffect(() => {
-    //     console.log(achievements);
-    // }, []);
-
+    
     return (
         <div className="achievements-container page-container">
             <h2 className="achievements-title">Achievements</h2>
@@ -87,35 +56,45 @@ export default function AchievementListComponent(props) {
             </div>
             <h3 className="achievements-subtitle">All won achievements</h3>
             <div className="achievements-list">
-                {achievements.map((achievement, index) =>
-                    <AchievementComponent key={index} id={index} achievementId={achievement.achievementID}
-                                          selected={achievement.selected}
-                                          date={achievement.date} showEdit={editSelected}
-                                          changeCheckedAction={changeCheckedElem}/>
-                )}
+                {renderAchievements(achievements,changeCheckedElem,editSelected)}
             </div>
         </div>
     );
 }
 
+function renderAchievements(achievements, changeAction, showEdit) {
+   const results = [];
+   const keys = Object.keys(achievements);
+   keys.forEach((keyA)=>{
+       const achievement = achievements[keyA];
+       results.push(<AchievementComponent key={keyA} date={achievement.date} selected={achievement.selected}
+                                          achievementId={achievement.achievementID}
+                                          showEdit={showEdit} id={keyA} changeCheckedAction={changeAction} />);
+   });
+
+   return (results);
+}
+
 function countSelectedAchievements(achievements) {
-    return achievements.filter((elem) => {
+    return Object.values(achievements).filter((elem) => {
         return elem.selected;
     }).length;
 }
 
 function getFirstSelected(achievements) {
-    for (let i = 0; i < achievements.length; i++) {
-        if (achievements[i].selected) {
-            return i;
+    const keys = Object.keys(achievements);
+    for (let i = 0; i < keys.length; i++) {
+        if (achievements[keys[i]].selected) {
+            return keys[i];
         }
     }
-    return -1;
+    return null;
 }
 
 function getSelectedAchievements(achievements, max) {
-    const maxElements = achievements.length < max ? achievements.length : max;
-    return achievements.filter((elem) => {
+    const achievementsArray = Object.values(achievements);
+    const maxElements = achievementsArray.length < max ? achievementsArray.length : max;
+    return achievementsArray.filter((elem) => {
         return elem.selected;
-    }).slice(0, max);
+    }).slice(0, maxElements);
 }
