@@ -13,7 +13,7 @@ export function UserDetailsProvider(props) {
         name: '',
         motto: '',
         imageURL: '',
-        selectedAchievements: []
+        selectedAchievements: {}
     });
 
     const changeName = (name) => {
@@ -23,6 +23,11 @@ export function UserDetailsProvider(props) {
     const changeMotto = (motto) => {
         changeData('motto', motto, userDetails, setUserDetails);
     }
+
+    const changeSelectedAchievements = (achievements) => {
+        changeData('selectedAchievements', achievements, userDetails, setUserDetails);
+    }
+
 
     const saveUserData = () => {
         firebaseDatabase.updateUserDetails(userAuth.user.uid, userDetails).then(() => {
@@ -45,10 +50,8 @@ export function UserDetailsProvider(props) {
         if (userAuth.isAuthenticated()) {
             firebaseDatabase.getUserDetails(userAuth.user.uid).then((userDbDetails) => {
                 if (userDbDetails) {
-                    const achievementTable = userDbDetails.selectedAchievements ? userDbDetails.selectedAchievements.values() : [];
                     setUserDetails({
-                        ...userDbDetails,
-                        selectedAchievements: achievementTable
+                        ...userDbDetails
                     });
                 }
             });
@@ -57,14 +60,15 @@ export function UserDetailsProvider(props) {
                 name: '',
                 motto: '',
                 imageURL: '',
-                selectedAchievements: []
+                selectedAchievements: {}
             });
         }
     }, [userAuth.user.uid]);
 
 
     return (
-        <UserDetailContext.Provider value={{userDetails, changeName, changeMotto, saveUserData, uploadImage}}>
+        <UserDetailContext.Provider
+            value={{userDetails, changeName, changeMotto, saveUserData, uploadImage, changeSelectedAchievements}}>
             {props.children}
         </UserDetailContext.Provider>
     )

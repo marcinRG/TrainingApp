@@ -20,9 +20,22 @@ class FirebaseDatabase {
     //     return removeElem(userUID, this.usersDetailsRef);
     // }
 
-    saveSelectedAchievements(userUID, achievements) {
-        console.log(achievements)
+    saveSelectedAchievements(userUID, achievements, selectedAchievements) {
+        const achievementsRef = this.userAchievements;
+        const userRef = this.usersDetailsRef.child(userUID).child('selectedAchievements');
+        return updateElem(userUID, achievements, achievementsRef).then(() => {
+            return userRef.set(selectedAchievements);
+        });
     }
+
+    //const batch = database.batch();
+    // console.log(batch);
+    // const achievementsRef = this.userAchievements.child(userUID);
+    // console.log(prepareAchievements(achievements));
+    // const userRefAchievements = this.usersDetailsRef.child(userUID).child('selectedAchievements');
+    // batch.update(achievementsRef, achievements);
+    // return batch.commit();
+    //}
 
     addAchievement(userUID, achievement) {
         return addElement(userUID, achievement, this.userAchievements);
@@ -68,4 +81,16 @@ function getElement(ref) {
         });
     });
     return promise;
+}
+
+function prepareAchievements(achievements) {
+    const objectCopy = {};
+    for (const prop in achievements) {
+        if (achievements.hasOwnProperty(prop)) {
+            if (achievements[prop].selected === true) {
+                objectCopy[prop] = achievements[prop]
+            }
+        }
+    }
+    return objectCopy;
 }

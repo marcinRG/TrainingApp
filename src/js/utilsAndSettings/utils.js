@@ -23,3 +23,11 @@ export function getDateString(dateAsString, separator) {
 export function validDate(dateAsString) {
     return (dateAsString && Date.parse(dateAsString) !== Number.NaN);
 }
+
+export function objectPropertiesToArray(object) {
+    let values = [];
+    if (object) {
+        values = Object.values(object);
+    }
+    return values;
+}
