@@ -7,4 +7,21 @@
   .last-week-title {
     margin-bottom: 2em;
   }
+
+  .chart-component {
+    width: 70%;
+    margin: 1em auto;
+    text-align: center;
+  }
+
+  .chart-title {
+    color: #b88a73;
+    text-transform: uppercase;
+  }
+
+  .chart-svg {
+    width: 100%;
+    height: auto;
+  }
+
 }

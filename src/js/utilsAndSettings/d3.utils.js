@@ -105,7 +105,7 @@ export function appendArea(svgElement, scaleX, scaleY, chartProperties, data) {
         }).curve(d3.curveCardinal);
 
     chart.append('path').attr('d', areaGen(data))
-        .attr('fill', 'pink')
+        .attr('fill', '#eac99f')
         .attr('stroke', 'transparent');
 }
 
@@ -163,7 +163,7 @@ export function createPieChart(svgElement, data, settings) {
     const svg = d3.select(svgElement);
     const yExtent = getExtent(data, 'y');
     let color = d3.scaleLinear().domain(yExtent)
-        .range(['pink', 'red']);
+        .range(['#b88a73', '#eac99f']);
     const pies = d3.pie().value((d) => {
         return d.y;})(data);
     const radius = getChartHeight(settings) * 0.55 - settings.margins.left;

@@ -8,9 +8,47 @@
     margin-bottom: 2em;
   }
 
+  .chart-component {
+    width: 70%;
+    margin: 1em auto;
+    text-align: center;
+  }
+
+  .chart-title {
+    color: #b88a73;
+    text-transform: uppercase;
+  }
+
+  .chart-svg {
+    width: 100%;
+    height: auto;
+
+    .grid {
+      fill: #e9ac8f;
+    }
+
+    .domain {
+      stroke: #b88a73;
+    }
+
+    .tick {
+
+      text {
+        fill: #b88a73;
+      }
+
+      line {
+        stroke: #b88a73;
+        stroke-width: 1px;
+      }
+    }
+  }
+
+
   .combobox-input-wrapper {
     width: 80%;
     margin: 0 auto;
+    overflow: hidden;
 
     &::after {
       clear: both;
