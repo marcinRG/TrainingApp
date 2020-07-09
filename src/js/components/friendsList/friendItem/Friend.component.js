@@ -1,6 +1,8 @@
 import React from 'react';
 import './Friend.component.scss';
 import PropTypes from 'prop-types';
+import {objectPropertiesToArray} from '../../../utilsAndSettings/utils';
+import AchievementSmallComponent from '../../achievementsList/AchievementSmall/AchievementSmall.component';
 
 export default function FriendComponent(props) {
     const remove = () => {
@@ -32,19 +34,17 @@ export default function FriendComponent(props) {
             <picture className="portrait-wrapper">
                 <button className="button-remove" onClick={remove}></button>
                 <button className="button-add" onClick={add}></button>
-                <button className="button-up" onClick={moveUp} ></button>
+                <button className="button-up" onClick={moveUp}></button>
                 <button className="button-down" onClick={moveDown}></button>
                 <img className="friend-portrait" src={props.imgPath} alt={props.userName}/>
             </picture>
             <div className="title-description-wrapper">
                 <h2 className="friend-title">{props.userName}</h2>
-                <p className="friend-description">{props.id}{props.userDescription}</p>
+                <p className="friend-description">{props.userDescription}</p>
             </div>
             <ul className="achievement-selected">
-                {props.achievements.map((achiv, index) =>
-                    <li className="small-achievement" key={index}>
-                        <img src={achiv.imagePath} alt={achiv.title}/>
-                    </li>
+                {objectPropertiesToArray(props.achievements).map((elem, index) =>
+                    <AchievementSmallComponent key={index} achievementId={elem.achievementID}/>
                 )}
             </ul>
         </div>
@@ -56,7 +56,7 @@ FriendComponent.propTypes = {
     imgPath: PropTypes.string.isRequired,
     userName: PropTypes.string.isRequired,
     userDescription: PropTypes.string.isRequired,
-    achievements: PropTypes.array.isRequired,
+    achievements: PropTypes.object,
     removeAction: PropTypes.func,
     addAction: PropTypes.func,
     moveUpAction: PropTypes.func,

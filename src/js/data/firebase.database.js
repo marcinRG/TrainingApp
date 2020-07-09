@@ -3,17 +3,29 @@ import {FirebaseInst} from './firebase.config';
 const database = FirebaseInst.database();
 const userDetails = 'userDetails';
 const userAchievements = 'achievements';
+const userFriends = 'friends';
 
 class FirebaseDatabase {
 
     constructor() {
         this.usersDetailsRef = database.ref().child(userDetails);
         this.userAchievements = database.ref().child(userAchievements);
+        this.userFriends = database.ref().child(userFriends);
     }
 
     getUserDetails(userUID) {
         const userRef = this.usersDetailsRef.child(userUID);
         return getElement(userRef);
+    }
+
+    getFriendsList(userUID) {
+        const userRef = this.userFriends.child(userUID);
+        return getElement(userRef);
+    }
+
+    saveFriendsList(userUID, friendsList) {
+        const userRef = this.userFriends.child(userUID);
+        return userRef.set(friendsList);
     }
 
     // removeUserDetails(userUID) {
@@ -36,6 +48,19 @@ class FirebaseDatabase {
     // batch.update(achievementsRef, achievements);
     // return batch.commit();
     //}
+
+    getUsers(textQuery) {
+        const userRef = this.usersDetailsRef;
+        const query = userRef.orderByChild('name').startAt(textQuery).limitToFirst(3);
+        const promise = new Promise((resolve, reject) => {
+            query.on('value', (snapshot) => {
+                resolve(snapshot.val());
+            }, (errorObject) => {
+                reject(errorObject);
+            });
+        });
+        return promise;
+    }
 
     addAchievement(userUID, achievement) {
         return addElement(userUID, achievement, this.userAchievements);

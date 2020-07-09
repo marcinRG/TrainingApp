@@ -12,6 +12,8 @@ export default function HomePageComponent(props) {
         achievementID: ''
     });
 
+    const [searchQuery, setSearchQuery] = useState('');
+
     const changeDate = (event) => {
         const newState = {...formValues, date: event.target.value};
         setFormValues(newState);
@@ -20,6 +22,10 @@ export default function HomePageComponent(props) {
     const changeAchievement = (event) => {
         const newState = {...formValues, achievementID: event.target.value};
         setFormValues(newState);
+    }
+
+    const changeQuery = (event) => {
+        setSearchQuery(event.target.value);
     }
 
     const saveAchievement = (event) => {
@@ -47,6 +53,13 @@ export default function HomePageComponent(props) {
         })
     }
 
+    const getUsers = (event) => {
+        event.preventDefault();
+        firebaseDatabase.getUsers(searchQuery).then((value) => {
+            console.log(value);
+        });
+    }
+
     return (
         <div className="home-container page-container">
             <h2>Home page</h2>
@@ -58,6 +71,11 @@ export default function HomePageComponent(props) {
                 <button onClick={saveAchievement}>Save achievement</button>
             </form>
             <button onClick={getAchievements}>get Achievements</button>
+            <form className="temp-form">
+                <label>search phase</label>
+                <input type="text" value={searchQuery} onChange={changeQuery}/>
+                <button onClick={getUsers}>Search</button>
+            </form>
         </div>
     )
 }

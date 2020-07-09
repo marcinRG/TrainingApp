@@ -31,3 +31,13 @@ export function objectPropertiesToArray(object) {
     }
     return values;
 }
+
+export function arrayPropertiesToObject(array) {
+    let values = {};
+    if (array && array.length>0) {
+        for (let i=0; i<array.length;i++) {
+            values['val'+i] = array[i];
+        }
+    }
+    return values;
+}

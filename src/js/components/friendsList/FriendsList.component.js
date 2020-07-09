@@ -1,15 +1,26 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import './FriendsList.component.scss';
 import FriendComponent from './friendItem/Friend.component';
-import {friends} from '../../data/init.data';
-import {getElementClass} from '../../utilsAndSettings/utils';
+import {arrayPropertiesToObject, getElementClass, objectPropertiesToArray} from '../../utilsAndSettings/utils';
+import {firebaseDatabase} from '../../data/firebase.database';
+import {AuthContext} from '../../appContext/AuthContext';
 
 export default function FriendsListComponent(props) {
 
     const [enableEdit, setEnableEdit] = useState(false);
-    const [friendsList, setFriendsList] = useState(friends);
+    const [friendsList, setFriendsList] = useState([]);
     const [usersSearchResults, setUserSearchResults] = useState([]);
     const [searchText, setSearchText] = useState('');
+    const userAuth = useContext(AuthContext);
+
+    useEffect(() => {
+        if (userAuth.user.uid) {
+            firebaseDatabase.getFriendsList(userAuth.user.uid).then(friendsList => {
+                setFriendsList(objectPropertiesToArray(friendsList));
+            });
+        }
+    }, []);
+
 
     const changeSearchText = (event) => {
         const newValue = event.target.value;
@@ -23,17 +34,19 @@ export default function FriendsListComponent(props) {
 
     const searchInDataBase = (event) => {
         event.preventDefault();
-        const newState = friends.filter((elem)=> {
-            return elem.nick.toUpperCase().includes(searchText.toUpperCase());
+        firebaseDatabase.getUsers(searchText).then((value) => {
+            setUserSearchResults(objectPropertiesToArray(value));
         });
-        setUserSearchResults(newState);
     }
 
     const saveInDataBase = () => {
-        console.log('save in database');
+        if (userAuth.user.uid) {
+            const friendsObject = arrayPropertiesToObject(friendsList);
+            firebaseDatabase.saveFriendsList(userAuth.user.uid, friendsObject);
+        }
     }
 
-    const changeShowSearch = (event) => {
+    const changeShowSearch = () => {
         setEnableEdit(!enableEdit);
     };
 
@@ -79,28 +92,35 @@ export default function FriendsListComponent(props) {
             </div>
             <div className={changeSearchClass(enableEdit)}>
                 <form className="search-friend-form">
-                    <input className="input-text" type="text" placeholder="find new friends" onChange={changeSearchText} value={searchText}/>
+                    <h3 className="friends-subtitle">Find new friends</h3>
+                    <input className="input-text" type="text" placeholder="find new friends" onChange={changeSearchText}
+                           value={searchText}/>
                     <button className="button" onClick={searchInDataBase}>Find</button>
                 </form>
+                {(usersSearchResults.length > 0) &&
                 <div className="search-results">
+                    <h3 className="friends-subtitle">Search results</h3>
                     <div className="friends-list search-results">
                         {usersSearchResults.map((friend, index) =>
-                            <FriendComponent key={index} id={index} imgPath={friend.imagePath} userName={friend.nick}
-                                             userDescription={friend.shortDescription}
+                            <FriendComponent key={index} id={index} imgPath={friend.imageURL} userName={friend.name}
+                                             userDescription={friend.motto}
                                              achievements={friend.selectedAchievements}
                                              addAction={addFriend}
                             />
                         )}
                     </div>
                     <div className="button-wrapper search-results">
-                        {usersSearchResults.length > 0 && <button className="button" onClick={clearSearchResults}>Clear search results</button>}
+                        {usersSearchResults.length > 0 &&
+                        <button className="button" onClick={clearSearchResults}>Clear search results</button>}
                     </div>
-                </div>
+                </div>}
             </div>
             <div className={changeFriendsListClass(enableEdit)}>
+                <h3 className="friends-subtitle">{enableEdit ? <span>Rearrange / remove friends</span> :
+                    <span>My friends</span>}</h3>
                 {friendsList.map((friend, index) =>
-                    <FriendComponent key={index} id={index} imgPath={friend.imagePath} userName={friend.nick}
-                                     userDescription={friend.shortDescription}
+                    <FriendComponent key={index} id={index} imgPath={friend.imageURL} userName={friend.name}
+                                     userDescription={friend.motto}
                                      achievements={friend.selectedAchievements}
                                      removeAction={removeFriend} moveDownAction={moveFriendDown}
                                      moveUpAction={moveFriendUp}
