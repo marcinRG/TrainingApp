@@ -9,9 +9,58 @@
   }
 
   .chart-component {
-    width: 70%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    &.first {
+      background-color: aquamarine;
+
+      .chart-svg {
+        width: 100%;
+        height: auto;
+
+        .grid {
+          fill: yellowgreen;
+        }
+
+        .domain {
+          stroke: yellow;
+        }
+
+        .tick {
+
+          text {
+            fill: magenta;
+          }
+
+          line {
+            stroke: maroon;
+            stroke-width: 1px;
+          }
+        }
+      }
+    }
+
+    &.second {
+       visibility: hidden;
+    }
+
+    &.third {
+      visibility:  hidden;
+    }
+
+  }
+
+  .charts-container {
+    width: 600px;
+    height: 600px;
+    position: relative;
     margin: 1em auto;
     text-align: center;
+    padding: 2em;
   }
 
   .chart-title {
@@ -48,7 +97,7 @@
   .combobox-input-wrapper {
     width: 80%;
     margin: 0 auto;
-    overflow: hidden;
+    height: 35px;
 
     &::after {
       clear: both;

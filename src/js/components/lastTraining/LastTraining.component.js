@@ -53,22 +53,25 @@ export default function LastTrainingComponent(props) {
             <div className="combobox-input-wrapper">
                 <TrainingDetailsComponent/>
             </div>
-            <div className="chart-component">
-                <label className="chart-title">Chart title</label>
-                <svg ref={distanceSvg} className="chart-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
-                </svg>
-            </div>
-            <div className="chart-component">
-                <label className="chart-title">Chart title</label>
-                <svg ref={caloriesSvg} className="chart-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
-                </svg>
-            </div>
-            <div className="chart-component">
-                <label className="chart-title">Chart title</label>
-                <svg ref={heartbeatSvg} className="chart-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
-                </svg>
+            <div className="charts-container">
+                <div className="chart-component first">
+                    <label className="chart-title">Chart title</label>
+                    <svg ref={distanceSvg} className="chart-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+                    </svg>
+                </div>
+                <div className="chart-component second">
+                    <label className="chart-title">Chart title</label>
+                    <svg ref={caloriesSvg} className="chart-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+                    </svg>
+                </div>
+                <div className="chart-component third">
+                    <label className="chart-title">Chart title</label>
+                    <svg ref={heartbeatSvg} className="chart-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+                    </svg>
+                </div>
             </div>
 
         </div>
     );
 }
+

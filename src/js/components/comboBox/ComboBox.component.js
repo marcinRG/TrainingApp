@@ -6,10 +6,10 @@ import {ComboBoxElementComponent} from './ComboBoxElement.component';
 
 export function ComboBoxComponent(props) {
     const [showMenu, setShowMenu] = useState(false);
-    const [text, setText] = useState('');
+
 
     const changeSelectedText = (txt) => {
-        setText(txt);
+        props.actionSelect(txt);
         setShowMenu(false);
     };
 
@@ -20,7 +20,7 @@ export function ComboBoxComponent(props) {
     return (
         <div className="combobox-input">
             <div className="inputs">
-                <span className='input-text'>{text}</span>
+                <span className='input-text'>{props.selected}</span>
                 <button className="input-btn" onClick={showItems}><span className={setIconClass(showMenu)}></span>
                 </button>
             </div>
@@ -53,4 +53,6 @@ function setListStyle(show, array) {
 
 ComboBoxComponent.propTypes = {
     values: PropTypes.array.isRequired,
+    selected: PropTypes.string.isRequired,
+    actionSelect: PropTypes.func.isRequired
 };
