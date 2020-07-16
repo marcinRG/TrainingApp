@@ -67,7 +67,7 @@ export const trainingData = {
         },
         '1': {
             x:1,
-            y: 82
+            y: 182
         },
         '2': {
             x:2,
@@ -87,7 +87,7 @@ export const trainingData = {
         },
         '6': {
             x:6,
-            y: 792
+            y: 692
         }
     },
     heartbeatRate: {

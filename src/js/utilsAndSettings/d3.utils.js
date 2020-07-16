@@ -24,10 +24,14 @@ export function transformInputData(array) {
 }
 
 export function getChartWidth(chartProperties) {
+    //console.log('width');
+    //console.log(chartProperties.xMax - (chartProperties.margins.left + chartProperties.margins.right));
     return chartProperties.xMax - (chartProperties.margins.left + chartProperties.margins.right);
 }
 
 export function getChartHeight(chartProperties) {
+    //console.log('height');
+    //console.log(chartProperties.yMax - (chartProperties.margins.top + chartProperties.margins.bottom));
     return chartProperties.yMax - (chartProperties.margins.top + chartProperties.margins.bottom);
 }
 
@@ -43,11 +47,11 @@ export function getExtent(data, field, addBounds) {
 }
 
 export function getYRange(charProperties) {
-    return [getChartWidth(charProperties), 0];
+    return [getChartHeight(charProperties), 0];
 }
 
 export function getXRange(chartProperties) {
-    return [0, getChartHeight(chartProperties)];
+    return [0, getChartWidth(chartProperties)];
 }
 
 export function getScale(range, extent) {
@@ -59,25 +63,31 @@ function translateElement(element, left, top) {
 }
 
 export function appendXAxis(svgElement, scale, chartProperties) {
-    let axisXSvg = svgElement.append('g');
+    let axisXSvg = svgElement.append('g').attr('class', 'axis x');
     axisXSvg = translateElement(axisXSvg, chartProperties.margins.left,
         chartProperties.margins.top + getChartHeight(chartProperties));
-    const axis = d3.axisBottom(scale);
+    const axis = d3.axisBottom(scale).ticks(3);
     axisXSvg.call(axis);
+    const ticks = axisXSvg.selectAll('.tick');
+    ticks.attr('class', 'circles');
+    ticks.append('circle').attr('r', 2);
 }
 
 export function appendYAxis(svgElement, scale, chartProperties) {
-    let axisYSvg = svgElement.append('g');
+    let axisYSvg = svgElement.append('g').attr('class', 'axis y');
     axisYSvg = translateElement(axisYSvg, chartProperties.margins.left, chartProperties.margins.top);
-    const axis = d3.axisLeft(scale);
+    const axis = d3.axisLeft(scale).ticks(3);
     axisYSvg.call(axis);
+    const ticks = axisYSvg.selectAll('.tick');
+    ticks.attr('class', 'circles');
+    ticks.append('circle').attr('r', 2);
 }
 
 export function appendXGrid(svgElement, scale, chartProperties) {
     let gridXSvg = svgElement.append('g').attr('class', 'grid x');
     gridXSvg = translateElement(gridXSvg, chartProperties.margins.left,
         chartProperties.margins.top);
-    const axis = d3.axisBottom(scale).tickSizeInner(getChartHeight(chartProperties)).tickSizeOuter(0);
+    const axis = d3.axisBottom(scale).tickSizeInner(getChartHeight(chartProperties)).ticks(3);
     gridXSvg.call(axis);
 }
 
@@ -85,7 +95,7 @@ export function appendYGrid(svgElement, scale, chartProperties) {
     let gridYSvg = svgElement.append('g').attr('class', 'grid y');
     gridYSvg = translateElement(gridYSvg, chartProperties.margins.left,
         chartProperties.margins.top);
-    const axis = d3.axisRight(scale).tickSizeInner(getChartWidth(chartProperties)).tickSizeOuter(0);
+    const axis = d3.axisRight(scale).tickSizeInner(getChartWidth(chartProperties)).ticks(3);
     gridYSvg.call(axis);
 }
 
@@ -105,7 +115,7 @@ export function appendArea(svgElement, scaleX, scaleY, chartProperties, data) {
         }).curve(d3.curveCardinal);
 
     chart.append('path').attr('d', areaGen(data))
-        .attr('fill', '#eac99f')
+        .attr('class', 'chart-area')
         .attr('stroke', 'transparent');
 }
 
@@ -183,11 +193,11 @@ export function createAreaChart(svgElement, data, settings) {
     const yRange = getYRange(settings);
     const xScale = getScale(xRange, xExtent);
     const yScale = getScale(yRange, [0, d3.max(yExtent)]);
-    appendXGrid(svg, xScale, settings);
+    //appendXGrid(svg, xScale, settings);
     appendYGrid(svg, yScale, settings);
+    appendArea(svg, xScale, yScale, settings, data);
     appendXAxis(svg, xScale, settings);
     appendYAxis(svg, yScale, settings);
-    appendArea(svg, xScale, yScale, settings, data);
     return svgElement;
 }
 

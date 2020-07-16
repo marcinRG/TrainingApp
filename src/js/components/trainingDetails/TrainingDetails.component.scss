@@ -1,3 +1,200 @@
-//.training-details-component {
-//  //background-color: white;
-//}
+@import './../../../scss/variables';
+@import './../../../scss/mixins';
+@import './../../../scss/common';
+
+.training-details-component {
+  //background-color: white;
+
+  .chart-title {
+    color: #b88a73;
+    text-transform: uppercase;
+  }
+
+  .chart-component {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    .chart-area {
+      fill: #d59e84;
+      stroke: #d59e84;
+    }
+
+    .axis {
+      path {
+        stroke: #b88a73;
+      }
+    }
+
+    .grid {
+      path,
+      text {
+        stroke: transparent;
+        fill: transparent;
+      }
+
+      line {
+        stroke: #b88a73;
+        stroke-width: 1px;
+        stroke-dasharray: 4;
+      }
+
+
+    }
+
+    .circles {
+      circle {
+        stroke: #b88a73;
+        fill: #b88a73;
+      }
+
+      text {
+        fill: #b88a73;
+      }
+
+      line {
+        stroke: transparent;
+        fill: transparent;
+      }
+
+    }
+
+    &.first {
+      z-index: 8;
+
+      .chart-area {
+        fill: rgba(213, 158, 132, .85);
+        stroke: rgba(213, 158, 132, .85);
+      }
+
+      //background-color: white;
+    }
+
+    &.second {
+      z-index: 6;
+
+      .chart-title {
+        visibility: hidden;
+      }
+
+      .chart-area {
+        fill: rgba(234, 201, 159, .45);
+        stroke: rgba(234, 201, 159, .45);
+      }
+
+
+      .grid {
+
+        line {
+          stroke: transparent;
+          fill: transparent;
+        }
+      }
+
+      .circles {
+        circle {
+          stroke: transparent;
+          fill: transparent;
+        }
+
+        text {
+          stroke: transparent;
+          fill: transparent;
+        }
+
+        line {
+          stroke: transparent;
+          fill: transparent;
+        }
+
+      }
+
+      .axis {
+        path {
+          stroke: transparent;
+        }
+      }
+
+    }
+
+    &.third {
+      z-index: 4;
+
+      .chart-title {
+        visibility: hidden;
+      }
+
+      .chart-area {
+        fill: rgba(255, 253, 217, .1);
+        stroke: rgba(255, 253, 217, .1);
+      }
+
+      .grid {
+
+        line {
+          stroke: transparent;
+          fill: transparent;
+        }
+      }
+
+      .circles {
+        circle {
+          stroke: transparent;
+          fill: transparent;
+        }
+
+        text {
+          stroke: transparent;
+          fill: transparent;
+        }
+
+        line {
+          stroke: transparent;
+          fill: transparent;
+        }
+      }
+
+      .axis {
+        path {
+          stroke: transparent;
+        }
+      }
+
+    }
+
+  }
+
+  .charts-container {
+    width: 890px;
+    height: 600px;
+    //background-color: gold;
+    position: relative;
+    margin: 1em auto;
+    text-align: center;
+    padding: 2em;
+  }
+
+  .chart-svg {
+    width: 100%;
+    height: auto;
+  }
+
+
+  .combobox-input-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    height: 35px;
+
+    &::after {
+      clear: both;
+    }
+
+    & > div {
+      float: right;
+    }
+  }
+
+
+}
