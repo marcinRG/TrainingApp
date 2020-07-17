@@ -1,11 +1,11 @@
 import React, {useState, useRef, useContext, useEffect} from 'react';
-import './FileUploader.component.scss';
+import './ImageUploader.component.scss';
 import img from '../../../images/user1.svg'
 import {AuthContext} from '../../appContext/AuthContext';
 import {UserDetailContext} from '../../appContext/UserDetailsContext';
 
 
-export function FileUploaderComponent() {
+export function ImageUploaderComponent() {
     const [image, setImage] = useState({src: ''});
     const userAuth = useContext(AuthContext);
     const userDetailsContext = useContext(UserDetailContext);

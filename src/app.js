@@ -7,6 +7,7 @@ import {HashRouter as Router} from 'react-router-dom';
 import {AuthProvider} from './js/appContext/AuthContext';
 import {AppRoutesComponent} from './js/components/appRoutes/appRoutes.component';
 import {UserDetailsProvider} from './js/appContext/UserDetailsContext';
+import {UserDataProvider} from './js/appContext/UserDataContext';
 
 ReactDOM.render(
     <AuthProvider>
@@ -15,8 +16,10 @@ ReactDOM.render(
                 <MenuComponent/>
                 <div className="container">
                     <UserDetailsProvider>
-                        <UserInfoComponent/>
-                        <AppRoutesComponent/>
+                        <UserDataProvider>
+                            <UserInfoComponent/>
+                            <AppRoutesComponent/>
+                        </UserDataProvider>
                     </UserDetailsProvider>
                 </div>
             </React.Fragment>

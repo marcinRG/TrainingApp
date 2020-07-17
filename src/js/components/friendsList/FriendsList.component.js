@@ -5,7 +5,7 @@ import {arrayPropertiesToObject, getElementClass, objectPropertiesToArray} from 
 import {firebaseDatabase} from '../../data/firebase.database';
 import {AuthContext} from '../../appContext/AuthContext';
 
-export default function FriendsListComponent(props) {
+export default function FriendsListComponent() {
 
     const [enableEdit, setEnableEdit] = useState(false);
     const [friendsList, setFriendsList] = useState([]);

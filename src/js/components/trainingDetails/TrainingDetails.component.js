@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import './TrainingDetails.component.scss';
 import {ComboBoxComponent} from '../comboBox/ComboBox.component';
 import {objectPropertiesToArray} from '../../utilsAndSettings/utils';
-import {trainingData} from '../../data/init.data';
+import {trainingDataNew} from '../../data/init.data';
 import {AreaChartComponent} from '../areaChart/areaChart.component';
 
 export default function TrainingDetailsComponent() {
@@ -14,9 +14,9 @@ export default function TrainingDetailsComponent() {
     const [heartbeatData, setHeartbeatData] = useState([]);
 
     useEffect(() => {
-        setCaloriesData(objectPropertiesToArray(trainingData.calories));
-        setDistanceData(objectPropertiesToArray(trainingData.distance));
-        setHeartbeatData(objectPropertiesToArray(trainingData.heartbeatRate));
+        setCaloriesData(objectPropertiesToArray(trainingDataNew.values.calories));
+        setDistanceData(objectPropertiesToArray(trainingDataNew.values.distance));
+        setHeartbeatData(objectPropertiesToArray(trainingDataNew.values.heartbeatRate));
     }, []);
 
 

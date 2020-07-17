@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import './Settings.component.scss';
-import {FileUploaderComponent} from '../fileUploader/fileUploader.component';
+import {ImageUploaderComponent} from '../imageUploader/imageUploader.component';
 import {AuthContext} from '../../appContext/AuthContext';
 import {UserDetailContext} from '../../appContext/UserDetailsContext';
 
@@ -43,7 +43,7 @@ export default function SettingsComponent() {
                         </div>
                     </form>
                     <h3 className="settings-subtitle">User image</h3>
-                    <FileUploaderComponent />
+                    <ImageUploaderComponent />
                 </div>
             </div>}
         </React.Fragment>

@@ -1,7 +1,6 @@
 import './DatePicker.component.scss';
 import {months} from './../../data/monthAndDaysTables';
 import React, {useState, useEffect} from 'react';
-import PropTypes from 'prop-types';
 import {DayHeaderRowComponent} from './DayHeaderRow.component';
 import {DatePickerCellComponent} from './DatePickerCell.component';
 
@@ -125,8 +124,3 @@ function createTableCells(row, maxWidth, daysTable) {
     }
     return cells;
 }
-
-
-DatePickerComponent.propTypes = {
-    label: PropTypes.string.isRequired,
-};

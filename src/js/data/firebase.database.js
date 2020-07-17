@@ -4,6 +4,7 @@ const database = FirebaseInst.database();
 const userDetails = 'userDetails';
 const userAchievements = 'achievements';
 const userFriends = 'friends';
+const trainings = 'trainings';
 
 class FirebaseDatabase {
 
@@ -11,6 +12,7 @@ class FirebaseDatabase {
         this.usersDetailsRef = database.ref().child(userDetails);
         this.userAchievements = database.ref().child(userAchievements);
         this.userFriends = database.ref().child(userFriends);
+        this.userTrainings = database.ref().child(trainings);
     }
 
     getUserDetails(userUID) {
@@ -28,9 +30,15 @@ class FirebaseDatabase {
         return userRef.set(friendsList);
     }
 
-    // removeUserDetails(userUID) {
-    //     return removeElem(userUID, this.usersDetailsRef);
-    // }
+    addTraining(userUID, trainingData) {
+        return addElement(userUID, trainingData, this.userTrainings);
+    }
+
+    getNLastsTraining(userUID, count) {
+        const userTrainings = this.userTrainings.child(userUID);
+        const query = userTrainings.orderByKey().limitToLast(count);
+        return executeQuery(query);
+    }
 
     saveSelectedAchievements(userUID, achievements, selectedAchievements) {
         const achievementsRef = this.userAchievements;
@@ -40,37 +48,16 @@ class FirebaseDatabase {
         });
     }
 
-    //const batch = database.batch();
-    // console.log(batch);
-    // const achievementsRef = this.userAchievements.child(userUID);
-    // console.log(prepareAchievements(achievements));
-    // const userRefAchievements = this.usersDetailsRef.child(userUID).child('selectedAchievements');
-    // batch.update(achievementsRef, achievements);
-    // return batch.commit();
-    //}
-
     getUsers(textQuery) {
         const userRef = this.usersDetailsRef;
         const query = userRef.orderByChild('name').startAt(textQuery).limitToFirst(3);
-        const promise = new Promise((resolve, reject) => {
-            query.on('value', (snapshot) => {
-                resolve(snapshot.val());
-            }, (errorObject) => {
-                reject(errorObject);
-            });
-        });
-        return promise;
-    }
-
-    addAchievement(userUID, achievement) {
-        return addElement(userUID, achievement, this.userAchievements);
+        return executeQuery(query);
     }
 
     getUserAchievements(userUID) {
         const achievementsRef = this.userAchievements.child(userUID);
         return getElement(achievementsRef);
     }
-
 
     updateUserDetails(userUID, obj) {
         return updateElem(userUID, obj, this.usersDetailsRef);
@@ -80,14 +67,32 @@ class FirebaseDatabase {
         return updateElem(userUID, {imageURL: imagePath}, this.usersDetailsRef);
     }
 
+    // removeUserDetails(userUID) {
+    //     return removeElem(userUID, this.usersDetailsRef);
+    // }
+    // addAchievement(userUID, achievement) {
+    //     return addElement(userUID, achievement, this.userAchievements);
+    // }
 
 }
 
 export const firebaseDatabase = new FirebaseDatabase();
 
-// function removeElem(userUID, obj, ref) {
-//     return ref.child(userUID).remove();
-// }
+function executeQuery(query) {
+    const promise = new Promise((resolve, reject) => {
+        query.on('value', (snapshot) => {
+            resolve(snapshot.val());
+        }, (errorObject) => {
+            reject(errorObject);
+        });
+    });
+    return promise;
+}
+
+
+function removeElem(userUID, obj, ref) {
+    return ref.child(userUID).remove();
+}
 
 function addElement(userUID, obj, ref) {
     return ref.child(userUID).push().set(obj);
@@ -106,16 +111,4 @@ function getElement(ref) {
         });
     });
     return promise;
-}
-
-function prepareAchievements(achievements) {
-    const objectCopy = {};
-    for (const prop in achievements) {
-        if (achievements.hasOwnProperty(prop)) {
-            if (achievements[prop].selected === true) {
-                objectCopy[prop] = achievements[prop]
-            }
-        }
-    }
-    return objectCopy;
 }

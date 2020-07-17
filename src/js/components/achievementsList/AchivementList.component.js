@@ -8,7 +8,7 @@ import {UserDetailContext} from '../../appContext/UserDetailsContext';
 import {objectPropertiesToArray} from '../../utilsAndSettings/utils';
 
 const maxNumberOfSelectedAchievements = 3;
-export default function AchievementListComponent(props) {
+export default function AchievementListComponent() {
 
     const userAuth = useContext(AuthContext);
     const userDetailsContext = useContext(UserDetailContext);
