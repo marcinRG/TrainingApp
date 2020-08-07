@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import './TrainingDetails.component.scss';
 import {ComboBoxComponent} from '../comboBox/ComboBox.component';
 import {objectPropertiesToArray} from '../../utilsAndSettings/utils';

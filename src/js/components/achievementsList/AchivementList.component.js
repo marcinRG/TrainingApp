@@ -18,6 +18,7 @@ export default function AchievementListComponent() {
     useEffect(() => {
         if (userAuth.user && userAuth.user.uid) {
             firebaseDatabase.getUserAchievements(userAuth.user.uid).then((achievementsObject) => {
+                console.log(achievementsObject);
                 setAchievements(achievementsObject);
             });
         }

@@ -135,7 +135,8 @@
 .friend {
   @include block-border-box;
   float: left;
-  width: 33.333%;
+  width: 33.331%;
+  min-height: 555px;
   padding: 0 1em;
   margin-bottom: 1em;
 

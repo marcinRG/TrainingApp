@@ -12,6 +12,7 @@ export default function AchievementSmallComponent(props){
             <div className={getClassName(props.big)}>
                 <img src={imagePath} alt={title} className="image-achievement"/>
                 {props.big && <h3 className="achievement-name">{title}</h3>}
+                {props.showDate && <p className="achievement-date">{props.date}</p>}
             </div>
     )
 }
@@ -26,5 +27,7 @@ function getClassName(big) {
 
 AchievementSmallComponent.propTypes = {
     achievementId: PropTypes.string,
-    big: PropTypes.bool
+    date: PropTypes.string,
+    big: PropTypes.bool,
+    showDate: PropTypes.bool
 };

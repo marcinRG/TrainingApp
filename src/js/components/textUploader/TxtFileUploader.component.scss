@@ -3,5 +3,61 @@
 @import './../../../scss/common';
 
 .text-uploader-component {
-  background-color: white;
+  margin-bottom: 20px;
+
+  .file-uploader-form {
+    margin: 0 auto;
+    width: 100%;
+    background-color: rgba(6, 6, 7, .45);
+    border-top: 3px solid #b88a73;
+    padding: 20px 0 40px;
+  }
+
+  .file-name-input {
+    width: 100%;
+    display: inline-block;
+    height: 40px;
+    color: #eac99f;
+    line-height: 35px;
+    background-color: rgba(209, 213, 253, .2);
+    margin-bottom: 1.4em;
+    margin-top: 4px;
+    vertical-align: center;
+    padding-left: 20px;
+    font-size: .85em;
+    outline: 0;
+  }
+
+  .file-uploader-subtitle {
+    color: #e9ac8f;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: .95em;
+    margin: 1em 0;
+  }
+
+  .btn-uploader {
+    border: 2px solid #e9ac8f;
+    border-radius: 20px;
+    padding: 1em 4em;
+    text-transform: uppercase;
+    color: #e9ac8f;
+    font-weight: bolder;
+    background-color: transparent;
+    margin: 2em 10px;
+    cursor: pointer;
+    outline: none;
+    float: left;
+  }
+
+  .btn-wrapper {
+    width: 100%;
+    height: 90px;
+    overflow: hidden;
+
+    &::after {
+      clear: both;
+    }
+  }
+
 }

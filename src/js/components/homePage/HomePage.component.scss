@@ -3,7 +3,27 @@
 @import './../../../scss/common';
 
 .home-container {
+  .home-wrapper {
+    width: 800px;
+    margin: 0 auto;
+  }
+
   .homepage-title {
     margin-bottom: 2em;
   }
+
+  .summaries-wrapper {
+    width: 100%;
+    margin-bottom: 20px;
+
+    .summaries-subtitle {
+      color: #e9ac8f;
+      text-transform: uppercase;
+      font-weight: normal;
+      font-size: .95em;
+      margin: 1em 0;
+    }
+
+  }
+
 }
