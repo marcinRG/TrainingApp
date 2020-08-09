@@ -21,7 +21,7 @@ export function getDateString(dateAsString, separator) {
 }
 
 export function validDate(dateAsString) {
-    return (dateAsString && Date.parse(dateAsString) !== Number.NaN);
+    return (dateAsString && !Number.isNaN(Date.parse(dateAsString)));
 }
 
 export function objectPropertiesToArray(object) {

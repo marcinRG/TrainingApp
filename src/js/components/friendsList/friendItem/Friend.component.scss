@@ -74,6 +74,11 @@
 }
 
 .editable {
+
+  .friend {
+    height: auto;
+  }
+
   .button-remove {
     display: block;
 
@@ -136,7 +141,7 @@
   @include block-border-box;
   float: left;
   width: 33.331%;
-  min-height: 555px;
+  height: 555px;
   padding: 0 1em;
   margin-bottom: 1em;
 

@@ -62,7 +62,7 @@ export function ImageUploaderComponent() {
             {userAuth.isAuthenticated() && <div className="img-uploader-component">
                 <h4 className="uploader-title">Image uploader</h4>
                 <div className="image-thumbnail">
-                    <img src={getImgSrc()} className="upload-image" ref={imgRef}/>
+                    <img src={getImgSrc()} className="upload-image" ref={imgRef} alt="uploaded image"/>
                 </div>
                 <form className="upload-form">
                     <input ref={buttonRef} className="btn-uploader" type="button" value="load an image"
