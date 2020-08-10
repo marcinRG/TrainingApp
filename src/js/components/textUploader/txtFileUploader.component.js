@@ -18,8 +18,8 @@ export function TxtFileUploaderComponent(props) {
         event.preventDefault();
         if (file) {
             userDataContext.saveUserTrainingToDatabase(file);
+            inputTextRef.current.value = '';
             setFile(null);
-
         }
     }
 

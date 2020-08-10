@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import './LastAchievement.component.scss';
 import AchievementSmallComponent from '../achievementsList/AchievementSmall/AchievementSmall.component';
 import {UserDataContext} from '../../appContext/UserDataContext';
+import {sortByDateDesc} from '../../utilsAndSettings/utils';
 
 
 export function LastAchievementsComponent() {
@@ -28,14 +29,5 @@ export function LastAchievementsComponent() {
 }
 
 function getLatestAchievements(achievementObject, count) {
-    return (Object.values(achievementObject)).sort((value1, value2) => {
-        if (value1.date > value2.date) {
-            return -1;
-        }
-        if (value1.date < value2.date) {
-            return 1;
-        }
-        return 0;
-    }).slice(0, count);
-
+    return (Object.values(achievementObject)).sort(sortByDateDesc).slice(0, count);
 }

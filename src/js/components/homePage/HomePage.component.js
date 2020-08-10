@@ -1,21 +1,27 @@
 import './HomePage.component.scss';
-import React from 'react';
+import React, {useContext} from 'react';
 import {LastAchievementsComponent} from '../lastAchievements/LastAchievements.component';
 import {TxtFileUploaderComponent} from '../textUploader/txtFileUploader.component';
 import {TrainingSummaryComponent} from '../trainingSummary/trainingSummary.component';
+import {UserDataContext} from '../../appContext/UserDataContext';
+import {LinksConstants} from '../../utilsAndSettings/LinkConstants';
 
-export default function HomePageComponent(props) {
+export default function HomePageComponent() {
+
+    const userDataContext = useContext(UserDataContext);
 
     return (
         <div className="home-container page-container">
             <div className="home-wrapper">
                 <h2 className="homepage-title">Home page</h2>
-                <TxtFileUploaderComponent />
-                <LastAchievementsComponent />
+                <TxtFileUploaderComponent/>
+                <LastAchievementsComponent/>
                 <div className="summaries-wrapper">
                     <h3 className="summaries-subtitle">Training summaries</h3>
-                    <TrainingSummaryComponent calories={'600'} distance={'9,84'} heartbeatRate={'180'} title={'Last training summary'} />
-                    <TrainingSummaryComponent calories={'3600'} distance={'51,25'} heartbeatRate={'180'} title={'Last 7 days summary'} />
+                    <TrainingSummaryComponent data={userDataContext.getLastTrainingSummary()}
+                                              title={'Last training summary'} link={ LinksConstants.LAST_TRAINING}/>
+                    <TrainingSummaryComponent data={userDataContext.getLastWeekSummary()}
+                                              title={'Last 7 days summary'} link={LinksConstants.LAST_WEEK}/>
                 </div>
             </div>
         </div>

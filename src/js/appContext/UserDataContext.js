@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {AuthContext} from './AuthContext';
 import {firebaseDatabase} from '../data/firebase.database';
 import {UserDetailContext} from './UserDetailsContext';
-import {arrayPropertiesToObject, objectPropertiesToArray} from '../utilsAndSettings/utils';
+import {arrayPropertiesToObject, objectPropertiesToArray, sortByDateDesc} from '../utilsAndSettings/utils';
 
 export const UserDataContext = React.createContext(null);
 
@@ -44,9 +44,16 @@ export function UserDataProvider(props) {
     const getUserTrainingsFromDataBase = () => {
         if (userAuth.user.uid) {
             firebaseDatabase.getNLastsTraining(userAuth.user.uid, 7).then(trainings => {
-                setTrainings(trainings);
+                setTrainings((Object.values(trainings)).sort(sortByDateDesc));
             });
         }
+    }
+
+    const getLastTraining = () => {
+        if (Array.isArray(trainings) && trainings.length > 0) {
+            return trainings[0];
+        }
+        return [];
     }
 
     const removeFriend = (id) => {
@@ -101,7 +108,9 @@ export function UserDataProvider(props) {
 
     const saveUserTrainingToDatabase = (trainingData) => {
         if (userAuth.user && userAuth.user.uid) {
-            firebaseDatabase.addTraining(userAuth.user.uid, trainingData);
+            firebaseDatabase.addTraining(userAuth.user.uid, trainingData).then(() => {
+                getUserTrainingsFromDataBase();
+            });
         }
     }
 
@@ -121,6 +130,25 @@ export function UserDataProvider(props) {
         setAchievements(newState);
     }
 
+    const getLastTrainingSummary = () => {
+        return getMaxFromValues(getLastTraining());
+    }
+
+    const getLastWeekSummary = () => {
+        let sumObject = {
+            calories: 0, distance: 0, heartbeat: 0
+        }
+        trainings.forEach(training => {
+            let tempObj = getMaxFromValues(training);
+            sumObject.calories = sumObject.calories + tempObj.calories;
+            sumObject.distance = sumObject.distance + tempObj.distance;
+            if (tempObj.heartbeat>sumObject.heartbeat) {
+                sumObject.heartbeat = tempObj.heartbeat;
+            }
+        });
+        return sumObject;
+    }
+
     useEffect(() => {
         if (userAuth.isAuthenticated()) {
             getUserAchievementsFromDatabase();
@@ -128,7 +156,7 @@ export function UserDataProvider(props) {
             getUserTrainingsFromDataBase();
 
         } else {
-            setTrainings({});
+            setTrainings([]);
             setAchievements({});
             setFriends([]);
         }
@@ -142,6 +170,9 @@ export function UserDataProvider(props) {
                 friends,
                 usersSearchResults,
                 trainings,
+                getLastTraining,
+                getLastTrainingSummary,
+                getLastWeekSummary,
                 removeFriend,
                 addFriend,
                 moveFriendUp,
@@ -189,4 +220,29 @@ export function getSelectedAchievements(achievements) {
         }
     }
     return objectCopy;
+}
+
+function getMaxValueFromArrayField(object, fieldName) {
+    let max = -10;
+    if (object) {
+        if (object.hasOwnProperty(fieldName) && Array.isArray(object[fieldName])) {
+            const tempArray = object[fieldName];
+            tempArray.forEach(elem => {
+                if (elem['y'] > max) {
+                    max = elem['y'];
+                }
+            });
+        }
+    }
+    return max;
+}
+
+function getMaxFromValues(object) {
+    if (object && object.hasOwnProperty('values')) {
+        return {
+            calories: getMaxValueFromArrayField(object.values, 'calories'),
+            distance: getMaxValueFromArrayField(object.values, 'distance'),
+            heartbeat: getMaxValueFromArrayField(object.values, 'heartbeat')
+        }
+    }
 }
