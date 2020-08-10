@@ -1,8 +1,10 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState, useContext} from 'react';
 import './TxtFileUploader.component.scss';
+import {UserDataContext} from '../../appContext/UserDataContext';
 
 export function TxtFileUploaderComponent(props) {
 
+    const userDataContext = useContext(UserDataContext);
     const inputTextRef = useRef();
     const inputFileRef = useRef();
     const [file, setFile] = useState(null);
@@ -12,15 +14,25 @@ export function TxtFileUploaderComponent(props) {
         inputFileRef.current.click();
     }
 
+    const saveFileData = (event) => {
+        event.preventDefault();
+        if (file) {
+            userDataContext.saveUserTrainingToDatabase(file);
+            setFile(null);
+
+        }
+    }
+
     const fileChange = () => {
         const fileInput = inputFileRef.current.files[0];
         const fileReader = new FileReader();
         fileReader.addEventListener('load', () => {
             inputTextRef.current.value = fileInput.name;
-            setFile(fileInput);
+            setFile(JSON.parse(fileReader.result));
         });
         fileReader.readAsText(fileInput)
     }
+
 
     return (
         <div className="text-uploader-component">
@@ -32,7 +44,7 @@ export function TxtFileUploaderComponent(props) {
                        style={{display: 'none'}} ref={inputFileRef} onChange={fileChange}/>
                 <div className="btn-wrapper">
                     <button className="btn-uploader" onClick={loadFile}>load data from file</button>
-                    <button className="btn-uploader">save to database</button>
+                    <button className="btn-uploader" onClick={saveFileData}>save to database</button>
                 </div>
             </form>
         </div>

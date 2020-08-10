@@ -84,11 +84,16 @@ export function UserDataProvider(props) {
         });
     }
 
-
     const saveUserAchievementsToDatabase = () => {
         if (userAuth.user && userAuth.user.uid) {
             userDetailsContext.changeSelectedAchievements(getSelectedAchievements(achievements));
             firebaseDatabase.saveSelectedAchievements(userAuth.user.uid, achievements, getSelectedAchievements(achievements));
+        }
+    }
+
+    const saveUserTrainingToDatabase = (trainingData) => {
+        if (userAuth.user && userAuth.user.uid) {
+            firebaseDatabase.addTraining(userAuth.user.uid, trainingData);
         }
     }
 
@@ -136,7 +141,8 @@ export function UserDataProvider(props) {
                 searchUsersInDataBase,
                 saveUserFriendsToDatabase,
                 changeCheckedAchievement,
-                saveUserAchievementsToDatabase
+                saveUserAchievementsToDatabase,
+                saveUserTrainingToDatabase
             }}>
             {props.children}
         </UserDataContext.Provider>
