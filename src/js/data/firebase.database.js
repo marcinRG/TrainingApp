@@ -36,7 +36,7 @@ class FirebaseDatabase {
 
     getNLastsTraining(userUID, count) {
         const userTrainings = this.userTrainings.child(userUID);
-        const query = userTrainings.orderByKey().limitToLast(count);
+        const query = userTrainings.orderByChild('date').limitToLast(count);
         return executeQuery(query);
     }
 

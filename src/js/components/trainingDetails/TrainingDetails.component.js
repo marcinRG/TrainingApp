@@ -1,27 +1,18 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './TrainingDetails.component.scss';
 import {ComboBoxComponent} from '../comboBox/ComboBox.component';
 import {objectPropertiesToArray} from '../../utilsAndSettings/utils';
-import {trainingDataNew} from '../../data/init.data';
 import {AreaChartComponent} from '../areaChart/areaChart.component';
+import PropTypes from 'prop-types';
 
-export default function TrainingDetailsComponent() {
+export default function TrainingDetailsComponent(props) {
 
-    const values = ['calories', 'distance', 'heartbeat'];
     const [selected, setSelected] = useState(0);
-    const [distanceData, setDistanceData] = useState([]);
-    const [caloriesData, setCaloriesData] = useState([]);
-    const [heartbeatData, setHeartbeatData] = useState([]);
-
-    useEffect(() => {
-        setCaloriesData(objectPropertiesToArray(trainingDataNew.values.calories));
-        setDistanceData(objectPropertiesToArray(trainingDataNew.values.distance));
-        setHeartbeatData(objectPropertiesToArray(trainingDataNew.values.heartbeatRate));
-    }, []);
+    const names = getValuesKeys(props.data);
 
 
     const changeSelected = (text) => {
-        const index = values.indexOf(text);
+        const index = names.indexOf(text);
         if (index >= 0) {
             setSelected(index);
         }
@@ -29,23 +20,48 @@ export default function TrainingDetailsComponent() {
 
     return (
         <div className="training-details-component">
-            <div className="combobox-input-wrapper">
-                <ComboBoxComponent values={values} selected={getValueFromArray(selected, values)}
-                                   actionSelect={changeSelected}/>
-            </div>
-
-            <div className="charts-container">
-                <AreaChartComponent data={caloriesData} selected={selected} id={0} title={values[0]}/>
-                <AreaChartComponent data={distanceData} selected={selected} id={1} title={values[1]}/>
-                <AreaChartComponent data={heartbeatData} selected={selected} id={2} title={values[2]}/>
-            </div>
+            {(names.length > 0) &&
+            <React.Fragment>
+                <div className="combobox-input-wrapper">
+                    <ComboBoxComponent values={names} selected={getValueFromArray(selected, names)}
+                                       actionSelect={changeSelected}/>
+                </div>
+                <div className="charts-container">
+                    {names.map((name, index) =>
+                        <AreaChartComponent key={index} data={getChartData(props.data, name)} selected={selected}
+                                            id={index} title={names[index]}/>
+                    )}
+                </div>
+            </React.Fragment>}
         </div>
     );
 }
+
+TrainingDetailsComponent.propTypes = {
+    data: PropTypes.object,
+}
+
 
 function getValueFromArray(index, array) {
     if (index < array.length) {
         return array[index];
     }
     return '';
+}
+
+function getValuesKeys(data) {
+    if (data && data.values) {
+        const keys = Object.keys(data.values);
+        if (keys.length > 0) {
+            return keys;
+        }
+    }
+    return [];
+}
+
+function getChartData(data, dataSetName) {
+    if (data && data.values) {
+        return objectPropertiesToArray(data.values[dataSetName]);
+    }
+    return [];
 }

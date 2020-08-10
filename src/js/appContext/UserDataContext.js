@@ -13,7 +13,7 @@ export function UserDataProvider(props) {
     const userAuth = useContext(AuthContext);
     const userDetailsContext = useContext(UserDetailContext);
 
-    const [trainings, setTrainings] = useState({});
+    const [trainings, setTrainings] = useState([]);
     const [achievements, setAchievements] = useState({});
     const [friends, setFriends] = useState([]);
     const [usersSearchResults, setUserSearchResults] = useState([]);
@@ -38,6 +38,14 @@ export function UserDataProvider(props) {
         if (userAuth.user.uid) {
             const friendsObject = arrayPropertiesToObject(friends);
             firebaseDatabase.saveFriendsList(userAuth.user.uid, friendsObject);
+        }
+    }
+
+    const getUserTrainingsFromDataBase = () => {
+        if (userAuth.user.uid) {
+            firebaseDatabase.getNLastsTraining(userAuth.user.uid, 7).then(trainings => {
+                setTrainings(trainings);
+            });
         }
     }
 
@@ -117,7 +125,7 @@ export function UserDataProvider(props) {
         if (userAuth.isAuthenticated()) {
             getUserAchievementsFromDatabase();
             getUserFriendsFromDatabase();
-
+            getUserTrainingsFromDataBase();
 
         } else {
             setTrainings({});
@@ -133,6 +141,7 @@ export function UserDataProvider(props) {
                 achievements,
                 friends,
                 usersSearchResults,
+                trainings,
                 removeFriend,
                 addFriend,
                 moveFriendUp,
