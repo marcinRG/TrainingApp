@@ -1,8 +1,9 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useEffect, useContext} from 'react';
 import './LastWeek.component.scss';
 import {createChart, transformInputData, createPieChart, dataStatus} from '../../utilsAndSettings/d3.utils';
 import {weeklyData} from '../../data/init.data';
 import {objectPropertiesToArray} from '../../utilsAndSettings/utils';
+import {UserDataContext} from '../../appContext/UserDataContext';
 
 const chartProperties = {
     margins: {
@@ -17,18 +18,19 @@ const chartProperties = {
 
 
 export default function LastWeekComponent(props) {
+    const userDataContext = useContext(UserDataContext);
     const svgRef = useRef();
 
     useEffect(() => {
-        console.log('init last week');
         const array = objectPropertiesToArray(weeklyData);
-        console.log(array);
         svgRef.current = createChart(svgRef.current,
             {
                 status: dataStatus.OK,
                 data: array
             }, chartProperties,createPieChart);
     }, []);
+
+    console.log(userDataContext.getLastWeekTrainings());
 
     return (
         <div className="last-week-container page-container">

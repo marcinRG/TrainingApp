@@ -1,16 +1,24 @@
 import './DatePicker.component.scss';
 import {months} from './../../data/monthAndDaysTables';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {DayHeaderRowComponent} from './DayHeaderRow.component';
 import {DatePickerCellComponent} from './DatePickerCell.component';
+import {UserDataContext} from '../../appContext/UserDataContext';
 
-export function DatePickerComponent(props) {
+export function DatePickerComponent() {
 
     const [calendar, setCalendar] = useState({
         date: new Date(),
     });
 
     const [daysOfMonth, setDaysOfMonth] = useState([]);
+
+    const userDataContext = useContext(UserDataContext);
+
+    useEffect(() => {
+        //userDataContext.getUserTrainingsFromDataBaseInTimeSpan('2017-09-01','2017-09-30');
+    }, []);
+
 
     const changeMonth = (event) => {
         let month = calendar.date.getMonth();

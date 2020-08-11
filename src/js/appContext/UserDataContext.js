@@ -49,6 +49,14 @@ export function UserDataProvider(props) {
         }
     }
 
+    const getUserTrainingsFromDataBaseInTimeSpan = (startDate,endDate) => {
+        if (userAuth.user.uid) {
+            firebaseDatabase.getTrainingsInTimeSpan(userAuth.user.uid, startDate,endDate).then(trainings => {
+                console.log(trainings);
+            });
+        }
+    }
+
     const getLastTraining = () => {
         if (Array.isArray(trainings) && trainings.length > 0) {
             return trainings[0];
@@ -134,7 +142,7 @@ export function UserDataProvider(props) {
         return getMaxFromValues(getLastTraining());
     }
 
-    const getLastWeekSummary = () => {
+    const getLastWeekTrainingSummary = () => {
         let sumObject = {
             calories: 0, distance: 0, heartbeat: 0
         }
@@ -148,6 +156,16 @@ export function UserDataProvider(props) {
         });
         return sumObject;
     }
+
+    const getLastWeekTrainings = () => {
+        const trainingsDailySummaryArray = [];
+        trainings.forEach(training => {
+            trainingsDailySummaryArray.push(getMaxFromValues(training));
+        });
+        return trainingsDailySummaryArray;
+    }
+
+
 
     useEffect(() => {
         if (userAuth.isAuthenticated()) {
@@ -172,7 +190,8 @@ export function UserDataProvider(props) {
                 trainings,
                 getLastTraining,
                 getLastTrainingSummary,
-                getLastWeekSummary,
+                getLastWeekTrainingSummary,
+                getLastWeekTrainings,
                 removeFriend,
                 addFriend,
                 moveFriendUp,
@@ -182,7 +201,8 @@ export function UserDataProvider(props) {
                 saveUserFriendsToDatabase,
                 changeCheckedAchievement,
                 saveUserAchievementsToDatabase,
-                saveUserTrainingToDatabase
+                saveUserTrainingToDatabase,
+                getUserTrainingsFromDataBaseInTimeSpan
             }}>
             {props.children}
         </UserDataContext.Provider>

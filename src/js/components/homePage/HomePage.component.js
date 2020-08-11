@@ -20,7 +20,7 @@ export default function HomePageComponent() {
                     <h3 className="summaries-subtitle">Training summaries</h3>
                     <TrainingSummaryComponent data={userDataContext.getLastTrainingSummary()}
                                               title={'Last training summary'} link={ LinksConstants.LAST_TRAINING}/>
-                    <TrainingSummaryComponent data={userDataContext.getLastWeekSummary()}
+                    <TrainingSummaryComponent data={userDataContext.getLastWeekTrainingSummary()}
                                               title={'Last 7 days summary'} link={LinksConstants.LAST_WEEK}/>
                 </div>
             </div>

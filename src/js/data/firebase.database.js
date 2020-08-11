@@ -40,6 +40,12 @@ class FirebaseDatabase {
         return executeQuery(query);
     }
 
+    getTrainingsInTimeSpan(userUID,startDate, endDate) {
+        const userTrainings = this.userTrainings.child(userUID);
+        const query = userTrainings.orderByChild('date').startAt(startDate).endAt(endDate);
+        return executeQuery(query);
+    }
+
     saveSelectedAchievements(userUID, achievements, selectedAchievements) {
         const achievementsRef = this.userAchievements;
         const userRef = this.usersDetailsRef.child(userUID).child('selectedAchievements');
