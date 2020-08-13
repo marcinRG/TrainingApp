@@ -54,3 +54,12 @@ export function sortByDateDesc(value1, value2) {
     }
 }
 
+export function getSafeString(str) {
+    const regex = /%/gm;
+    return str.replace(regex, '@_@');
+}
+
+export function getUnsafeString(str) {
+    const regex = /@_@/gm;
+    return str.replace(regex, '%');
+}
