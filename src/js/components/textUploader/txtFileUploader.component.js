@@ -2,7 +2,7 @@ import React, {useRef, useState, useContext} from 'react';
 import './TxtFileUploader.component.scss';
 import {UserDataContext} from '../../appContext/UserDataContext';
 
-export function TxtFileUploaderComponent(props) {
+export function TxtFileUploaderComponent() {
 
     const userDataContext = useContext(UserDataContext);
     const inputTextRef = useRef();

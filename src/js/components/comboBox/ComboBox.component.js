@@ -21,7 +21,7 @@ export function ComboBoxComponent(props) {
         <div className="combobox-input">
             <div className="inputs">
                 <span className='input-text'>{props.selected}</span>
-                <button className="input-btn" onClick={showItems}><span className={setIconClass(showMenu)}></span>
+                <button className="input-btn" onClick={showItems}><span className={setIconClass(showMenu)}/>
                 </button>
             </div>
             <ul className={'list-of-elements'} style={setListStyle(showMenu, props.values)}>

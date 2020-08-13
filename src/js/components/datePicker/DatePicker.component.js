@@ -5,381 +5,29 @@ import {DayHeaderRowComponent} from './DayHeaderRow.component';
 import {DatePickerCellComponent} from './DatePickerCell.component';
 import {UserDataContext} from '../../appContext/UserDataContext';
 import {getDateString} from '../../utilsAndSettings/utils';
-import {UserDataContext} from '../../appContext/UserDataContext';
 import {LinksConstants} from '../../utilsAndSettings/LinkConstants';
 
-const trainingData = {
-    '-MEMtBDN8WIoQAKNTf91' : {
-    'date' : '2020-08-02',
-        'values' : {
-        'calories' : [ {
-            'x' : 0,
-            'y' : 0
-        }, {
-            'x' : 1,
-            'y' : 30
-        }, {
-            'x' : 2,
-            'y' : 60
-        }, {
-            'x' : 3,
-            'y' : 150
-        }, {
-            'x' : 4,
-            'y' : 180
-        }, {
-            'x' : 5,
-            'y' : 220
-        }, {
-            'x' : 6,
-            'y' : 260
-        } ],
-            'distance' : [ {
-            'x' : 0,
-            'y' : 0
-        }, {
-            'x' : 1,
-            'y' : 182
-        }, {
-            'x' : 2,
-            'y' : 250
-        }, {
-            'x' : 3,
-            'y' : 345
-        }, {
-            'x' : 4,
-            'y' : 461
-        }, {
-            'x' : 5,
-            'y' : 550
-        }, {
-            'x' : 6,
-            'y' : 621
-        } ],
-            'heartbeat' : [ {
-            'x' : 0,
-            'y' : 75
-        }, {
-            'x' : 1,
-            'y' : 150
-        }, {
-            'x' : 2,
-            'y' : 130
-        }, {
-            'x' : 3,
-            'y' : 160
-        }, {
-            'x' : 4,
-            'y' : 150
-        }, {
-            'x' : 5,
-            'y' : 115
-        }, {
-            'x' : 6,
-            'y' : 99
-        } ]
-    }
-},
-    '-MEMtOm693tP-KO4DbD7' : {
-    'date' : '2020-08-14',
-        'values' : {
-        'calories' : [ {
-            'x' : 0,
-            'y' : 0
-        }, {
-            'x' : 1,
-            'y' : 30
-        }, {
-            'x' : 2,
-            'y' : 60
-        }, {
-            'x' : 3,
-            'y' : 150
-        }, {
-            'x' : 4,
-            'y' : 180
-        }, {
-            'x' : 5,
-            'y' : 220
-        }, {
-            'x' : 6,
-            'y' : 260
-        } ],
-            'distance' : [ {
-            'x' : 0,
-            'y' : 0
-        }, {
-            'x' : 1,
-            'y' : 182
-        }, {
-            'x' : 2,
-            'y' : 250
-        }, {
-            'x' : 3,
-            'y' : 345
-        }, {
-            'x' : 4,
-            'y' : 461
-        }, {
-            'x' : 5,
-            'y' : 550
-        }, {
-            'x' : 6,
-            'y' : 621
-        } ],
-            'heartbeat' : [ {
-            'x' : 0,
-            'y' : 75
-        }, {
-            'x' : 1,
-            'y' : 150
-        }, {
-            'x' : 2,
-            'y' : 130
-        }, {
-            'x' : 3,
-            'y' : 160
-        }, {
-            'x' : 4,
-            'y' : 150
-        }, {
-            'x' : 5,
-            'y' : 115
-        }, {
-            'x' : 6,
-            'y' : 99
-        } ]
-    }
-},
-    '-MEMta2UibweWsjyyhoU' : {
-    'date' : '2020-08-12',
-        'values' : {
-        'calories' : [ {
-            'x' : 0,
-            'y' : 0
-        }, {
-            'x' : 1,
-            'y' : 30
-        }, {
-            'x' : 2,
-            'y' : 60
-        }, {
-            'x' : 3,
-            'y' : 150
-        }, {
-            'x' : 4,
-            'y' : 180
-        }, {
-            'x' : 5,
-            'y' : 220
-        }, {
-            'x' : 6,
-            'y' : 260
-        } ],
-            'distance' : [ {
-            'x' : 0,
-            'y' : 0
-        }, {
-            'x' : 1,
-            'y' : 182
-        }, {
-            'x' : 2,
-            'y' : 250
-        }, {
-            'x' : 3,
-            'y' : 345
-        }, {
-            'x' : 4,
-            'y' : 461
-        }, {
-            'x' : 5,
-            'y' : 550
-        }, {
-            'x' : 6,
-            'y' : 621
-        } ],
-            'heartbeat' : [ {
-            'x' : 0,
-            'y' : 75
-        }, {
-            'x' : 1,
-            'y' : 150
-        }, {
-            'x' : 2,
-            'y' : 130
-        }, {
-            'x' : 3,
-            'y' : 160
-        }, {
-            'x' : 4,
-            'y' : 150
-        }, {
-            'x' : 5,
-            'y' : 115
-        }, {
-            'x' : 6,
-            'y' : 99
-        } ]
-    }
-},
-    '-MEMysNDawxIsIQWtgfp' : {
-    'date' : '2012-08-24',
-        'values' : {
-        'calories' : [ {
-            'x' : 0,
-            'y' : 0
-        }, {
-            'x' : 1,
-            'y' : 30
-        }, {
-            'x' : 2,
-            'y' : 60
-        }, {
-            'x' : 3,
-            'y' : 150
-        }, {
-            'x' : 4,
-            'y' : 180
-        }, {
-            'x' : 5,
-            'y' : 220
-        }, {
-            'x' : 6,
-            'y' : 260
-        } ],
-            'distance' : [ {
-            'x' : 0,
-            'y' : 0
-        }, {
-            'x' : 1,
-            'y' : 182
-        }, {
-            'x' : 2,
-            'y' : 250
-        }, {
-            'x' : 3,
-            'y' : 345
-        }, {
-            'x' : 4,
-            'y' : 461
-        }, {
-            'x' : 5,
-            'y' : 550
-        }, {
-            'x' : 6,
-            'y' : 621
-        } ],
-            'heartbeat' : [ {
-            'x' : 0,
-            'y' : 75
-        }, {
-            'x' : 1,
-            'y' : 150
-        }, {
-            'x' : 2,
-            'y' : 130
-        }, {
-            'x' : 3,
-            'y' : 160
-        }, {
-            'x' : 4,
-            'y' : 150
-        }, {
-            'x' : 5,
-            'y' : 115
-        }, {
-            'x' : 6,
-            'y' : 99
-        } ]
-    }
-},
-    '-MEMyz9vPtNXQPkSz1o2' : {
-    'date' : '2020-08-18',
-        'values' : {
-        'calories' : [ {
-            'x' : 0,
-            'y' : 0
-        }, {
-            'x' : 1,
-            'y' : 30
-        }, {
-            'x' : 2,
-            'y' : 60
-        }, {
-            'x' : 3,
-            'y' : 150
-        }, {
-            'x' : 4,
-            'y' : 180
-        }, {
-            'x' : 5,
-            'y' : 220
-        }, {
-            'x' : 6,
-            'y' : 260
-        } ],
-            'distance' : [ {
-            'x' : 0,
-            'y' : 0
-        }, {
-            'x' : 1,
-            'y' : 182
-        }, {
-            'x' : 2,
-            'y' : 250
-        }, {
-            'x' : 3,
-            'y' : 345
-        }, {
-            'x' : 4,
-            'y' : 461
-        }, {
-            'x' : 5,
-            'y' : 550
-        }, {
-            'x' : 6,
-            'y' : 621
-        } ],
-            'heartbeat' : [ {
-            'x' : 0,
-            'y' : 75
-        }, {
-            'x' : 1,
-            'y' : 150
-        }, {
-            'x' : 2,
-            'y' : 130
-        }, {
-            'x' : 3,
-            'y' : 160
-        }, {
-            'x' : 4,
-            'y' : 150
-        }, {
-            'x' : 5,
-            'y' : 115
-        }, {
-            'x' : 6,
-            'y' : 99
-        } ]
-    }
-},
-}
+const date = new Date();
 
+export function DatePickerComponent() {
+
+    const userDataContext = useContext(UserDataContext);
     const [calendar, setCalendar] = useState({
-        date: new Date(),
+        date: date,
     });
-
-    const [trainingDays, setTrainingDays] = useState(transformTrainingsObject(trainingData));
 
     const [daysOfMonth, setDaysOfMonth] = useState([]);
 
-    const userDataContext = useContext(UserDataContext);
-
     useEffect(() => {
-        //userDataContext.getUserTrainingsFromDataBaseInTimeSpan('2017-09-01','2017-09-30');
-    }, []);
+        getTrainingsAndDays(calendar.date);
+    }, [calendar.date]);
 
+    const getTrainingsAndDays = (date) => {
+        const firstAndLastDay = getFirstAndLastDayOfMonth(date);
+        userDataContext.getUserTrainingsFromDataBaseInTimeSpan(firstAndLastDay.first,firstAndLastDay.last).then((trainings)=>{
+            setDaysOfMonth([...createDaysOfMonth(calendar.date, transformTrainingsObject(trainings))]);
+        });
+    }
 
     const changeMonth = (event) => {
         let month = calendar.date.getMonth();
@@ -394,13 +42,7 @@ const trainingData = {
         setCalendar({
             date: tempDate,
         });
-    }
-
-    useEffect(() => {
-        const fistAndLastDay = getFirstAndLastDayOfMonth(calendar.date);
-        setTrainingDays(transformTrainingsObject(trainingData));
-        setDaysOfMonth([...createDaysOfMonth(calendar.date, trainingDays)]);
-    }, [calendar]);
+    };
 
     return (
         <div className="datepicker-input">
@@ -425,7 +67,7 @@ const trainingData = {
                 <span className={'icon icon-direction-right'} onClick={changeMonth} data-operation={'up'}></span>
             </div>
         </div>
-    )
+    );
 }
 
 function getMonthNames(monthIndex) {
@@ -451,7 +93,7 @@ function createDaysOfMonth(date, trainingDays) {
             values.push({
                 day: i - firstDay + 1,
                 enabled: true,
-                link: getLink(trainingDays,i - firstDay + 1)
+                link: getLink(trainingDays, i - firstDay + 1)
             });
         }
         if (i >= (daysCount + firstDay)) {
@@ -470,8 +112,8 @@ function lastDayOfPreviousMonth(date) {
 
 function getFirstAndLastDayOfMonth(date) {
     return {
-        first: getDateString(firstDayOfMonth(date).toString(),'-'),
-        last: getDateString(lastDayOfMonth(date).toString(),'-'),
+        first: getDateString(firstDayOfMonth(date).toString(), '-'),
+        last: getDateString(lastDayOfMonth(date).toString(), '-'),
     }
 }
 
@@ -508,25 +150,28 @@ function createTableCells(row, maxWidth, daysTable) {
     for (let i = 0; i < maxWidth; i++) {
         const id = row * maxWidth + i;
         const val = daysTable[id];
-        cells.push(<DatePickerCellComponent key={id} value={val.day} cellClass={'cell-day'} isEnabled={val.enabled} link={val.link}/>);
+        cells.push(<DatePickerCellComponent key={id} value={val.day} cellClass={'cell-day'} isEnabled={val.enabled}
+                                            link={val.link}/>);
     }
     return cells;
 }
 
 function getLink(trainingDays, index) {
-    if (trainingDays && trainingDays[index+'']) {
-        return LinksConstants.TRAINING + '/' + trainingDays[index+''].id;
+    if (trainingDays && trainingDays[index + '']) {
+        return LinksConstants.TRAINING + '/' + trainingDays[index + ''].id;
     }
 }
 
 function transformTrainingsObject(trainingsObject) {
-    const keys = Object.keys(trainingsObject);
     const output = {};
-    keys.forEach((key) => {
-         let obj = {};
-         obj.id = key;
-         output[getDayFromDate(trainingsObject[key].date)] = obj;
-    });
+    if (trainingsObject && Object.keys(trainingsObject)) {
+        const keys = Object.keys(trainingsObject);
+        keys.forEach((key) => {
+            let obj = {};
+            obj.id = key;
+            output[getDayFromDate(trainingsObject[key].date)] = obj;
+        });
+    }
     return output;
 }
 

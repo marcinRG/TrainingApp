@@ -1,7 +1,7 @@
 import './InfoPage.component.scss';
 import React from 'react';
 
-export default function InfoPageComponent(props) {
+export default function InfoPageComponent() {
     return (
         <div className="info-container page-container">
             <h2>Info</h2>

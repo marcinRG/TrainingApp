@@ -1,5 +1,5 @@
 import React from 'react';
-import {days, daysShort} from './../../data/monthAndDaysTables';
+import {days, daysShort} from '../../data/monthAndDaysTables';
 import {PropTypes} from 'prop-types';
 
 export function DayHeaderRowComponent(props) {

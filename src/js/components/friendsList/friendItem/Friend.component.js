@@ -32,10 +32,10 @@ export default function FriendComponent(props) {
     return (
         <div className="friend">
             <picture className="portrait-wrapper">
-                <button className="button-remove" onClick={remove}></button>
-                <button className="button-add" onClick={add}></button>
-                <button className="button-up" onClick={moveUp}></button>
-                <button className="button-down" onClick={moveDown}></button>
+                <button className="button-remove" onClick={remove}/>
+                <button className="button-add" onClick={add}/>
+                <button className="button-up" onClick={moveUp}/>
+                <button className="button-down" onClick={moveDown}/>
                 <img className="friend-portrait" src={props.imgPath} alt={props.userName}/>
             </picture>
             <div className="title-description-wrapper">

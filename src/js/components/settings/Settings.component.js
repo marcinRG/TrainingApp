@@ -31,13 +31,13 @@ export default function SettingsComponent() {
                     <form className="user-setting-form">
                         <label className="settings-form-label">e-mail</label>
                         <input type="text" className="settings-form-input" readOnly={true}
-                               value={userAuth.user.email}></input>
+                              value={userAuth.user.email}/>
                         <label className="settings-form-label">user name</label>
                         <input type="text" className="settings-form-input" value={userDetailsContext.userDetails.name}
-                               onChange={changeName} maxLength={25}></input>
+                              onChange={changeName} maxLength={25}/>
                         <label className="settings-form-label">user motto</label>
                         <textarea rows={5} className="settings-form-input area"
-                                  value={userDetailsContext.userDetails.motto} onChange={changeMotto}></textarea>
+                              value={userDetailsContext.userDetails.motto} onChange={changeMotto}/>
                         <div className="settings-form-button-wrapper">
                             <button className="settings-form-button" onClick={saveUserData}>Save user data</button>
                         </div>

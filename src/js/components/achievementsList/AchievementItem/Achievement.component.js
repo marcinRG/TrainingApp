@@ -18,7 +18,7 @@ export default function AchievementComponent(props) {
             </div>
             {props.showEdit &&
             <div className="select-wrapper">
-                <span className={setCheckedClass(props.selected)} onClick={changeChecked}></span>
+                <span className={setCheckedClass(props.selected)} onClick={changeChecked}/>
             </div>}
         </div>
     );

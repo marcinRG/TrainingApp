@@ -21,7 +21,7 @@ export default function AchievementListComponent() {
             <div className="selected-achievements-wrapper">
                 {objectPropertiesToArray(getSelectedAchievements(userDataContext.achievements)).map((achievement, index) =>
                     <AchievementSmallComponent key={index} big={true}
-                                               achievementId={achievement.achievementID}></AchievementSmallComponent>
+                                               achievementId={achievement.achievementID} />
                 )}
             </div>
             <div className="button-wrapper">

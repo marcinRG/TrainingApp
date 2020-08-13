@@ -49,12 +49,18 @@ export function UserDataProvider(props) {
         }
     }
 
-    const getUserTrainingsFromDataBaseInTimeSpan = (startDate,endDate) => {
-        if (userAuth.user.uid) {
-            firebaseDatabase.getTrainingsInTimeSpan(userAuth.user.uid, startDate,endDate).then(trainings => {
-                console.log(trainings);
-            });
-        }
+    const getUserTrainingsFromDataBaseInTimeSpan = (startDate, endDate) => {
+        return new Promise((resolve, reject) => {
+            if (userAuth.user.uid) {
+                firebaseDatabase.getTrainingsInTimeSpan(userAuth.user.uid, startDate, endDate).then(trainings => {
+                    resolve(trainings);
+                }).catch((error) => {
+                   reject(error);
+                });
+            } else {
+                reject(new Error('Auth error'));
+            }
+        });
     }
 
     const getLastTraining = () => {
@@ -150,7 +156,7 @@ export function UserDataProvider(props) {
             let tempObj = getMaxFromValues(training);
             sumObject.calories = sumObject.calories + tempObj.calories;
             sumObject.distance = sumObject.distance + tempObj.distance;
-            if (tempObj.heartbeat>sumObject.heartbeat) {
+            if (tempObj.heartbeat > sumObject.heartbeat) {
                 sumObject.heartbeat = tempObj.heartbeat;
             }
         });
@@ -164,7 +170,6 @@ export function UserDataProvider(props) {
         });
         return trainingsDailySummaryArray;
     }
-
 
 
     useEffect(() => {

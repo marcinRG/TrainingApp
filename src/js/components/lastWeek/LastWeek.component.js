@@ -17,7 +17,7 @@ const chartProperties = {
 };
 
 
-export default function LastWeekComponent(props) {
+export default function LastWeekComponent() {
     const userDataContext = useContext(UserDataContext);
     const svgRef = useRef();
 
