@@ -46,6 +46,11 @@ class FirebaseDatabase {
         return executeQuery(query);
     }
 
+    getTraining(userUID, trainingID) {
+        const userTraining = this.userTrainings.child(userUID).child(trainingID);
+        return getElement(userTraining);
+    }
+
     saveSelectedAchievements(userUID, achievements, selectedAchievements) {
         const achievementsRef = this.userAchievements;
         const userRef = this.usersDetailsRef.child(userUID).child('selectedAchievements');

@@ -54,6 +54,13 @@ export function sortByDateDesc(value1, value2) {
     }
 }
 
+export function objectIsNotEmpty(obj) {
+    if (obj && (Object.keys(obj).length !== 0)) {
+        return true;
+    }
+    return false;
+}
+
 export function getSafeString(str) {
     const regex = /%/gm;
     return str.replace(regex, '@_@');

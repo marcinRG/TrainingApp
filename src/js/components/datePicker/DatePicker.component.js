@@ -7,13 +7,11 @@ import {UserDataContext} from '../../appContext/UserDataContext';
 import {getDateString} from '../../utilsAndSettings/utils';
 import {LinksConstants} from '../../utilsAndSettings/LinkConstants';
 
-const date = new Date();
-
 export function DatePickerComponent() {
 
     const userDataContext = useContext(UserDataContext);
     const [calendar, setCalendar] = useState({
-        date: date,
+        date: new Date(),
     });
 
     const [daysOfMonth, setDaysOfMonth] = useState([]);

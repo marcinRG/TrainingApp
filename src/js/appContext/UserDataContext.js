@@ -63,6 +63,21 @@ export function UserDataProvider(props) {
         });
     }
 
+    const getUserTraining = (trainingID) => {
+        return new Promise((resolve, reject) => {
+            if (userAuth.user.uid) {
+                firebaseDatabase.getTraining(userAuth.user.uid, trainingID).then(training => {
+                    resolve(training);
+                }).catch((error) => {
+                    reject(error);
+                });
+            } else {
+                reject(new Error('Auth error'));
+            }
+        });
+    }
+
+
     const getLastTraining = () => {
         if (Array.isArray(trainings) && trainings.length > 0) {
             return trainings[0];
@@ -194,6 +209,7 @@ export function UserDataProvider(props) {
                 usersSearchResults,
                 trainings,
                 getLastTraining,
+                getUserTraining,
                 getLastTrainingSummary,
                 getLastWeekTrainingSummary,
                 getLastWeekTrainings,
