@@ -11,6 +11,7 @@ import SettingsComponent from '../settings/Settings.component';
 import InfoPageComponent from '../infoPage/InfoPage.component';
 import {AuthContext} from '../../appContext/AuthContext';
 import {LoginRegisterComponent} from '../loginRegister/LoginRegister.component';
+import TrainingComponent from '../training/Training.component';
 
 export function AppRoutesComponent(props) {
 
@@ -21,6 +22,7 @@ export function AppRoutesComponent(props) {
             {authContext.isAuthenticated() ?
                 <React.Fragment>
                     <Route exact={true} path="/" component={HomePageComponent}/>
+                    <Route path={LinksConstants.TRAINING  + '/:trainingId'} component={TrainingComponent}/>
                     <Route path={LinksConstants.LAST_WEEK + '/'} component={LastWeekComponent}/>
                     <Route path={LinksConstants.ACHIEVEMENTS + '/'} component={AchievementListComponent}/>
                     <Route path={LinksConstants.LAST_TRAINING + '/'} component={LastTrainingComponent}/>

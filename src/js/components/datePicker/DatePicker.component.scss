@@ -89,6 +89,16 @@
       opacity: 1;
     }
 
+    a {
+      color: black;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    &.link {
+      background-color: $color-f-2;
+    }
+
   }
 
 }
