@@ -140,10 +140,22 @@
 .friend {
   @include block-border-box;
   float: left;
-  width: 33.331%;
+  width: 100%;
   height: 555px;
   padding: 0 1em;
   margin-bottom: 1em;
+
+  @media screen {
+    @media (min-width: $media-br-1) {
+      width: 50%;
+    }
+  }
+
+  @media screen {
+    @media (min-width: $media-br-2) {
+      width: 33.331%;
+    }
+  }
 
 
   .friend-portrait {

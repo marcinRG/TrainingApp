@@ -4,20 +4,36 @@
 
 .home-container {
   .home-wrapper {
-    width: 800px;
-    margin: 0 auto;
+    width: 100%;
+
+    @media screen {
+      @media (min-width: $media-br-2) {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+    }
+
   }
 
   .homepage-title {
     margin-bottom: 2em;
+    text-align: center;
   }
 
   .summaries-wrapper {
     width: 100%;
+    height: 660px;
+    display: block;
     margin-bottom: 20px;
 
+    @media screen {
+      @media (min-width: $media-br-2) {
+        height: auto;
+      }
+    }
+
     .summaries-subtitle {
-      color: #e9ac8f;
+      color: $color-f-1;
       text-transform: uppercase;
       font-weight: normal;
       font-size: .95em;

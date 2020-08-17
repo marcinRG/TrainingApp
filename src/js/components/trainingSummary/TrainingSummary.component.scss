@@ -6,12 +6,23 @@
   @include set-to-zero;
   box-sizing: border-box;
   display: inline-block;
-  width: 48%;
-  margin: 0 1%;
+  height: 251px;
+  width: 100%;
+  margin: 0;
   padding: 2%;
   text-align: center;
   background-color: rgba(6, 6, 7, .45);
   border-top: 3px solid #b88a73;
+
+  @media screen {
+    @media (min-width: $media-br-2) {
+      height: auto;
+      width: 48%;
+      margin: 0 1%;
+      display: inline-block;
+    }
+  }
+
 
   .summary-title {
     width: 100%;
