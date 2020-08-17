@@ -6,32 +6,62 @@
 .show {
 
   &.menu {
-    width: 15em;
+
+    height: 100vh;
     background-color: $color-bg-3;
+
+    @media screen {
+
+      @media (min-width: $media-br-2) {
+        width: 240px;
+      }
+    }
 
     .items {
       left: 0;
+      width: 240px;
     }
+
   }
 }
 
 
 .menu {
 
-  background-color: $color-bg-2;
-  height: 100%;
   overflow: hidden;
   position: absolute;
+  background-color: $color-bg-2;
   transition-duration: .5s;
-  width: 6em;
   z-index: 10;
+  width: 100%;
+  height: 70px;
+  text-align: right;
+  padding-right: 5px;
+
+  @media screen {
+
+    @media (min-width: $media-br-2) {
+      height: 100%;
+      width: 6em;
+    }
+  }
+
 
   .menu-btn {
+
     background-color: transparent;
     color: white;
     cursor: pointer;
     outline: none;
-    width: 100%;
+
+
+    @media screen {
+
+      @media (min-width: $media-br-2) {
+        width: 100%;
+      }
+    }
+
 
     &::before {
       @include font-awesome-font;
@@ -53,19 +83,31 @@
   }
 
   .items {
-    left: -15em;
-    position: absolute;
+
+    position: relative;
     transition-duration: .5s;
-    width: 15em;
+    width: 100%;
+
+    @media screen {
+
+      @media (min-width: $media-br-2) {
+        left: -240px;
+        position: absolute;
+        width: 240px;
+      }
+    }
+
 
     li {
       @include block-border-box;
       padding: .2em 2em;
       width: 100%;
+      text-align: left;
     }
   }
 
   .link {
+
     color: white;
     display: inline-block;
     font-weight: 200;

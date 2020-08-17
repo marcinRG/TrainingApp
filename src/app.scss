@@ -31,7 +31,7 @@ ul {
 }
 
 body {
-  background-image: url('images/photo-mountains-unsplash.png');
+  background-image: url('images/photo-mountains-unsplash.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -50,26 +50,56 @@ body {
 }
 
 .app {
+
   position: absolute;
   z-index: 2;
-  width: 80%;
-  left: 50%;
   background-color: $color-bg-4;
   height: 100vh;
-  transform: translateX(-50%);
+  width: 100%;
+  left: 0;
+  top: 0;
+
+  @media screen {
+
+    @media (min-width: $media-br-2) {
+      width: 80%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
 }
 
 .container {
+  //display: none;
   overflow: hidden;
   z-index: 3;
   background-color: $color-bg-1;
   height: 100%;
-  margin-left: 6em;
+
+
+  @media screen {
+
+    @media (min-width: $media-br-2) {
+      margin-left: 6em;
+    }
+  }
+
 
   .details {
     background-color: $color-bg-4;
     height: 100%;
-    width: 80%;
+    width: 100%;
+    margin-top: 70px;
+
+    @media screen {
+
+      @media (min-width: $media-br-2) {
+        margin-top: 0;
+        width: 75%;
+      }
+    }
+
     float: right;
   }
 

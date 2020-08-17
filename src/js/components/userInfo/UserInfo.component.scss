@@ -5,43 +5,109 @@
 .user {
 
   float: left;
-  width: 20%;
-  height: 100%;
-  background-color: $color-bg-2;
+  width: 100%;
+  height: 70px;
+  margin-top: 70px;
+  padding: 10px;
+  background-color: $color-bg-1;
+
+  @media screen {
+
+    @media (min-width: $media-br-2) {
+      background-color: transparent;
+      padding: 0;
+      margin: 0;
+      width: 25%;
+      height: 100%;
+    }
+  }
 
 
   .usr-portrait {
-    display: block;
-    width: 150px;
-    height: 150px;
+    display: inline-block;
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
-    margin: 5em auto 0;
+    margin: 0;
+    line-height: 50px;
+    vertical-align: middle;
+
+    @media screen {
+
+      @media (min-width: $media-br-2) {
+        display: block;
+        width: 150px;
+        height: 150px;
+        margin: 5em auto 0;
+      }
+    }
+
+
   }
 
   .usr-title {
-    width: 100%;
-    padding: 2em 0 1em;
+
+    display: inline-block;
+    line-height: 50px;
+    vertical-align: middle;
+    margin-left: 20px;
     font-size: 1.2em;
     text-align: center;
     color: $color-f-1;
     font-weight: 600;
     text-transform: uppercase;
+
+    @media screen {
+
+      @media (min-width: $media-br-2) {
+        width: 100%;
+        display: block;
+        padding: 2em 0 1em;
+        margin: 0;
+      }
+    }
+
+
+
   }
 
   .usr-desc {
-    @include block-border-box;
-    padding: 0 2em;
-    width: 100%;
-    text-align: center;
-    letter-spacing: 1px;
-    line-height: 2em;
-    color: $color-f-6;
-    font-size: .8em;
+
+    display: none;
+
+    @media screen {
+
+      @media (min-width: $media-br-2) {
+        @include block-border-box;
+        padding: 0 2em;
+        width: 100%;
+        text-align: center;
+        letter-spacing: 1px;
+        line-height: 2em;
+        color: $color-f-6;
+        font-size: .8em;
+      }
+    }
+
+
+
   }
 
   .achievement-selected {
-    text-align: center;
-    padding: 2.5em 0;
+
+    display: none;
+
+    @media screen {
+
+      @media (min-width: $media-br-2) {
+        display: block;
+        text-align: center;
+        padding: 2.5em 0;
+      }
+    }
+
+
+
   }
 
   .small-achievement {
