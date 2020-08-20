@@ -2,13 +2,14 @@
 @import '../../../scss/variables';
 
 .datepicker-input {
-  position: relative;
-  overflow: hidden;
+  //position: relative;
+  //overflow: hidden;
 
 
   background-color: magenta;
   border: 1px dashed green;
   width: 100%;
+  height: 500px;
   display: block;
   margin: 0 auto;
 
@@ -40,7 +41,6 @@
         width: 60px;
       }
     }
-
 
     .icon {
       position: absolute;
@@ -95,7 +95,7 @@
   }
 
   .days-table {
-    display: none;
+    //display: none;
     ////
     @include set-to-zero;
     box-sizing: border-box;

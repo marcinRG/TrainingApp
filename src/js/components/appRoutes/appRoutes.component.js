@@ -18,8 +18,9 @@ export function AppRoutesComponent(props) {
     const authContext = useContext(AuthContext);
 
     return (
-        <div className="details">
-            {authContext.isAuthenticated() ?
+        <div className="app-main-container">
+            {
+                authContext.isAuthenticated() ?
                 <React.Fragment>
                     <Route exact={true} path="/" component={HomePageComponent}/>
                     <Route path={LinksConstants.TRAINING  + '/:trainingId'} component={TrainingComponent}/>

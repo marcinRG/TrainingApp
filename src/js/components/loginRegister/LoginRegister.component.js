@@ -47,7 +47,7 @@ export function LoginRegisterComponent() {
 
     return (
         <React.Fragment>
-            <div className="login-register-container page-container">
+            <div className="login-register-container">
                 <h2 className="login-register-title">Login or register</h2>
                 <div className="login-register-wrapper">
                     <div className="selection-buttons-container">
@@ -60,10 +60,12 @@ export function LoginRegisterComponent() {
                         <span>Register new account</span>}</p>
                     <form className="login-register-form">
                         <label>Email</label>
+
                         <div className="input-wrapper email">
                             <input className="input-text" type="text" placeholder="e-mail" onChange={changeEmail}
                                    value={loginData.email}/>
                         </div>
+
 
                         <label>Password</label>
                         <div className="input-wrapper password">

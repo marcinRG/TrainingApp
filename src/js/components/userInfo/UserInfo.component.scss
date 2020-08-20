@@ -7,14 +7,12 @@
   float: none;
   width: 100%;
   height: 70px;
-  margin-top: 70px;
   padding: 10px;
   background-color: $color-bg-1;
 
   @media screen {
 
     @media (min-width: $media-br-2) {
-      background-color: transparent;
       padding: 0;
       margin: 0;
       width: 25%;
@@ -42,8 +40,6 @@
         margin: 5em auto 0;
       }
     }
-
-
   }
 
   .usr-title {
@@ -67,9 +63,6 @@
         margin: 0;
       }
     }
-
-
-
   }
 
   .usr-desc {
@@ -89,9 +82,6 @@
         font-size: .8em;
       }
     }
-
-
-
   }
 
   .achievement-selected {
@@ -106,9 +96,6 @@
         padding: 2.5em 0;
       }
     }
-
-
-
   }
 
   .small-achievement {

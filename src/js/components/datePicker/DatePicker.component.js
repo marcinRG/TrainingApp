@@ -44,26 +44,26 @@ export function DatePickerComponent() {
 
     return (
         <div className="datepicker-input">
-            <div className={'left-panel'}>
-                <span className={'icon icon-direction-left'} onClick={changeMonth} data-operation={'down'}></span>
-            </div>
-            <div className={'center-panel'}>
-                <div className="date-picker">
-                    <div
-                        className="month-display">{calendar.date.getFullYear() + ' ' + getMonthNames(calendar.date.getMonth())}</div>
-                    <table className="days-table">
-                        <thead>
-                        <DayHeaderRowComponent cellClassName={'cell-header'} isDaysShort={true}/>
-                        </thead>
-                        <tbody>
-                        {createTableRows(6, 7, daysOfMonth)}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div className={'right-panel'}>
-                <span className={'icon icon-direction-right'} onClick={changeMonth} data-operation={'up'}></span>
-            </div>
+            {/*<div className={'left-panel'}>*/}
+            {/*    <span className={'icon icon-direction-left'} onClick={changeMonth} data-operation={'down'}></span>*/}
+            {/*</div>*/}
+            {/*<div className={'center-panel'}>*/}
+            {/*    <div className="date-picker">*/}
+            {/*        <div*/}
+            {/*            className="month-display">{calendar.date.getFullYear() + ' ' + getMonthNames(calendar.date.getMonth())}</div>*/}
+            {/*        <table className="days-table">*/}
+            {/*            <thead>*/}
+            {/*            <DayHeaderRowComponent cellClassName={'cell-header'} isDaysShort={true}/>*/}
+            {/*            </thead>*/}
+            {/*            <tbody>*/}
+            {/*            {createTableRows(6, 7, daysOfMonth)}*/}
+            {/*            </tbody>*/}
+            {/*        </table>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
+            {/*<div className={'right-panel'}>*/}
+            {/*    <span className={'icon icon-direction-right'} onClick={changeMonth} data-operation={'up'}></span>*/}
+            {/*</div>*/}
         </div>
     );
 }

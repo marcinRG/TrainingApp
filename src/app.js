@@ -14,7 +14,7 @@ ReactDOM.render(
         <Router hashType="slash">
             <React.Fragment>
                 <MenuComponent/>
-                <div className="container">
+                <div className="app-container">
                     <UserDetailsProvider>
                         <UserDataProvider>
                             <UserInfoComponent/>

@@ -12,6 +12,7 @@
 
 @mixin  button-template {
   display: inline-block;
+  outline: 0;
   border: 2px solid #e9ac8f;
   border-radius: 20px;
   padding: 1em 5em;
