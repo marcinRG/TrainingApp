@@ -3,6 +3,13 @@
 @import './../../../scss/common';
 
 .achievements-container {
+  padding: 30px 10px 200px;
+
+  @media screen {
+    @media (min-width: $media-br-2) {
+      padding: 30px 10px;
+    }
+  }
 
   .achievements-title {
     margin-bottom: 2em;
@@ -14,7 +21,7 @@
 
   .selected-achievements-wrapper {
     display: block;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
     padding: 20px;
@@ -29,6 +36,14 @@
 
   .button {
     @include button-template;
+    margin: 1em;
+
+    @media screen {
+      @media (min-width: $media-br-3) {
+        margin: 1em 0 70px 20px;
+      }
+    }
+
   }
 
 }

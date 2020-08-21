@@ -5,10 +5,20 @@
 .achievement {
   @include block-border-box;
   margin: 2.5em auto;
-  width: 80%;
+  width: 100%;
   position: relative;
+  padding: 1px 0 1px 95px;
   //border: 1px solid $color-f-1;
-  padding: 1em 65px 1em 95px;
+  //
+
+  @media screen {
+    @media (min-width: $media-br-2) {
+      width: 80%;
+      padding: 1em 65px 1em 95px;
+    }
+  }
+
+
 
   .achievement-name {
     text-transform: uppercase;
@@ -61,7 +71,7 @@
     line-height: 2em;
     color: $color-f-6;
     font-size: .8em;
-    width: 70%;
+    width: 100%;
   }
 
   .achievement-date {

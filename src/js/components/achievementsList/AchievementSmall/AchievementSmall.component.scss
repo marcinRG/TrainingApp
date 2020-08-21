@@ -8,9 +8,17 @@
 
   &.big {
     .image-achievement {
-      width: 40px;
-      height: 40px;
+      width: 20px;
+      height: 20px;
       filter: invert(65%) sepia(43%) saturate(311%) hue-rotate(334deg) brightness(96%) contrast(87%);
+
+      @media screen {
+        @media (min-width: $media-br-2) {
+          width: 40px;
+          height: 40px;
+        }
+      }
+
     }
 
     .achievement-name {
