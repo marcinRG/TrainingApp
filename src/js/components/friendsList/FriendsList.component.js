@@ -31,7 +31,7 @@ export default function FriendsListComponent() {
 
 
     return (
-        <div className="friends-container page-container">
+        <div className="friends-container">
             <h2 className="friends-title">Friends</h2>
             <div className="button-wrapper">
                 <button className="button" onClick={changeShowSearch}>Edit/change friend&apos;s list</button>
@@ -67,7 +67,6 @@ export default function FriendsListComponent() {
                 {userDataContext.friends.map((friend, index) =>
                     <FriendComponent key={index} id={index} imgPath={friend.imageURL} userName={friend.name}
                                      userDescription={friend.motto}
-                                     achievements={friend.selectedAchievements}
                                      removeAction={userDataContext.removeFriend}
                                      moveDownAction={userDataContext.moveFriendDown}
                                      moveUpAction={userDataContext.moveFriendUp}

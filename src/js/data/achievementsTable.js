@@ -34,166 +34,166 @@ export const achievementsTable = {
     'a01': {
         imagePath: imgA01,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
 
     'a02': {
         imagePath: imgA02,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
 
     'a03': {
         imagePath: imgA03,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a04': {
         imagePath: imgA04,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a05': {
         imagePath: imgA05,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a06': {
         imagePath: imgA06,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'ALorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a07': {
         imagePath: imgA07,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a08': {
         imagePath: imgA08,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a09': {
         imagePath: imgA09,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
 
     'a10': {
         imagePath: imgA11,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a11': {
         imagePath: imgA12,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a12': {
         imagePath: imgA13,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a13': {
         imagePath: imgA14,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a14': {
         imagePath: imgA15,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a15': {
         imagePath: imgA16,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a16': {
         imagePath: imgA17,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a17': {
         imagePath: imgA18,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a18': {
         imagePath: imgA19,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a19': {
         imagePath: imgA20,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a20': {
         imagePath: imgA21,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a21': {
         imagePath: imgA22,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a22': {
         imagePath: imgA23,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a23': {
         imagePath: imgA24,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
     'a24': {
         imagePath: imgA25,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
 
     'a25': {
         imagePath: imgA10,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
 
     'a26': {
         imagePath: imgA26,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
 
     'a27': {
         imagePath: imgA27,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
 
     'a28': {
         imagePath: imgA28,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
 
     'a29': {
         imagePath: imgA29,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
 
     'a30': {
         imagePath: imgA30,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
 
     'a31': {
         imagePath: imgA31,
         title: 'Achievement Title',
-        description: 'Achievement description'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh quis blandit venenatis, mi sem placerat nisl, ut tincidunt.'
     },
 };

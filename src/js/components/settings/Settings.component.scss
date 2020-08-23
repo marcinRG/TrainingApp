@@ -4,13 +4,22 @@
 
 .settings-container {
 
+  padding: 30px 10px;
+
   .settings-title {
     margin-bottom: 2em;
   }
 
   .settings-wrapper {
-    width: 800px;
+    width: 100%;
     margin: 0 auto;
+
+    @media screen {
+      @media (min-width: $media-br-2) {
+        width: 80%;
+      }
+    }
+
   }
 
   .settings-subtitle {
@@ -58,16 +67,8 @@
   }
 
   .settings-form-button {
-    border: 2px solid #e9ac8f;
-    border-radius: 20px;
-    padding: 1em 4em;
-    text-transform: uppercase;
-    color: #e9ac8f;
-    font-weight: bolder;
-    background-color: transparent;
-    margin: 2em 20px 2em 0;
-    cursor: pointer;
-    outline: none;
+    @include button-template;
+    margin: 10px;
   }
 
   .settings-form-button-wrapper {

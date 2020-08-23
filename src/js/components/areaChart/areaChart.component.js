@@ -18,11 +18,13 @@ export function AreaChartComponent(props) {
     const svgImgRef = useRef();
 
     useEffect(() => {
-        svgImgRef.current = createChart(svgImgRef.current,
-            {
-                status: dataStatus.OK,
-                data: props.data
-            }, chartProperties, createAreaChart);
+        if (props.data) {
+            svgImgRef.current = createChart(svgImgRef.current,
+                {
+                    status: dataStatus.OK,
+                    data: props.data
+                }, chartProperties, createAreaChart);
+        }
 
     }, [props.data]);
 
@@ -37,7 +39,7 @@ export function AreaChartComponent(props) {
 }
 
 AreaChartComponent.propTypes = {
-    data: PropTypes.array.isRequired,
+    data: PropTypes.any,
     selected: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired

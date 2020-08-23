@@ -24,7 +24,7 @@ export default function SettingsComponent() {
 
     return (
         <React.Fragment>
-            {userAuth.isAuthenticated() && <div className="settings-container page-container">
+            {userAuth.isAuthenticated() && <div className="settings-container">
                 <h2 className="settings-title">Settings</h2>
                 <div className="settings-wrapper">
                     <h3 className="settings-subtitle">User data</h3>

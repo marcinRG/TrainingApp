@@ -14,13 +14,28 @@
     color: #d59e84;
     text-transform: uppercase;
     margin: 1em;
+    flex: 1 1 100%;
     text-align: center;
     font-weight: normal;
+
+    @media screen {
+      @media (min-width: $media-br-1) {
+        flex: 2 2 100%;
+      }
+    }
+
+    @media screen {
+      @media (min-width: $media-br-3) {
+        flex: 3 3 100%;
+      }
+    }
+
   }
 
   .search-wrapper {
     width: 100%;
     display: none;
+    min-height: 185px;
 
     &.visible {
       display: block;
@@ -29,19 +44,21 @@
 
   .button {
     @include button-template;
+    width: 100%;
+    margin: 10px 0;
   }
 
   .search-friend-form {
-    width: 80%;
+    width: 100%;
     display: block;
     margin: 0 auto;
+    padding: 5px;
   }
 
   .input-text {
     @include input-template;
     background-color: rgba(209, 213, 253, .2);
-    width: 77%;
-    padding-left: 5px;
+    width: 100%;
   }
 
   .search-results {
@@ -52,10 +69,21 @@
 
 
   .button-wrapper {
-    width: 80%;
+    width: 100%;
     display: block;
     text-align: center;
     margin: 0 auto;
+    min-height: 130px;
+
+    &.summary {
+      min-height: 200px;
+    }
+
+    @media screen {
+      @media (min-width: $media-br-2) {
+        width: 80%;
+      }
+    }
 
     &.search-results {
       text-align: right;
@@ -64,13 +92,26 @@
   }
 
   .friends-list {
-    overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     border-top: 1px solid #eac99f;
     padding: 2em 0;
 
-    &::after {
-      clear: both;
+    &.editable,
+    &.search-results {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
+
+    @media screen {
+      @media (min-width: $media-br-2) {
+        flex-direction: row;
+        flex-flow: wrap;
+      }
+    }
+
   }
 
 }

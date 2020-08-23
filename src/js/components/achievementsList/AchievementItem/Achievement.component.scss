@@ -70,9 +70,17 @@
     letter-spacing: 1px;
     line-height: 2em;
     color: $color-f-6;
-    font-size: .8em;
     width: 100%;
-  }
+    font-size: .65em;
+    padding-right: 40px;
+
+    @media screen {
+      @media (min-width: $media-br-2) {
+        font-size: .75em;
+      }
+    }
+
+    }
 
   .achievement-date {
     display: block;

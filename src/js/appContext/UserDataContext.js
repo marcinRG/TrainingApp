@@ -77,12 +77,11 @@ export function UserDataProvider(props) {
         });
     }
 
-
     const getLastTraining = () => {
         if (Array.isArray(trainings) && trainings.length > 0) {
             return trainings[0];
         }
-        return [];
+        return null;
     }
 
     const removeFriend = (id) => {

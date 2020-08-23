@@ -1,5 +1,6 @@
 @import '../../../scss/mixins';
 @import '../../../scss/variables';
+@import '../../../scss/common';
 
 .img-uploader-component {
   margin: 0 auto;
@@ -21,21 +22,51 @@
 
   .image-thumbnail {
     background-color: transparent;
-    width: 40%;
-    display: inline-block;
+    width: 100%;
     padding: 30px;
+    display: block;
+    text-align: center;
+
+    @media screen {
+      @media (min-width: $media-br-2) {
+        width: 40%;
+        display: inline-block;
+      }
+    }
+
 
     .upload-image {
-      width: 100%;
-      height: auto;
+      width: auto;
+      max-height: 200px;
+
+      @media screen {
+        @media (min-width: $media-br-2) {
+          width: 100%;
+          height: auto;
+          max-height: inherit;
+        }
+      }
+
     }
   }
 
   .upload-form {
-    width: 60%;
-    display: inline-block;
+    width: 100%;
+    display: block;
     height: 100%;
     vertical-align: top;
+    text-align: center;
+    min-height: 270px;
+    padding: 5px;
+
+    @media screen {
+      @media (min-width: $media-br-2) {
+        width: 60%;
+        display: inline-block;
+        text-align: left;
+      }
+    }
+
 
     label {
       width: 100%;
@@ -46,16 +77,17 @@
     }
 
     .btn-uploader {
-      border: 2px solid #e9ac8f;
-      border-radius: 20px;
-      padding: 1em 4em;
-      text-transform: uppercase;
-      color: #e9ac8f;
-      font-weight: bolder;
-      background-color: transparent;
-      margin: 2em 0;
-      cursor: pointer;
-      outline: none;
+      @include button-template;
+      margin: 10px 0;
+      width: 100%;
+
+      @media screen {
+        @media (min-width: $media-br-1) {
+          width: auto;
+          margin: 10px;
+        }
+      }
+
     }
 
     .img-props {

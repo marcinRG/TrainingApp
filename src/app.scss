@@ -87,6 +87,7 @@ body {
 
 .app-main-container {
   height: 100vh;
-  overflow: scroll;
+  overflow-x: auto;
+  overflow-y: auto;
 }
 

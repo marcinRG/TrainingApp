@@ -24,14 +24,10 @@ export function transformInputData(array) {
 }
 
 export function getChartWidth(chartProperties) {
-    //console.log('width');
-    //console.log(chartProperties.xMax - (chartProperties.margins.left + chartProperties.margins.right));
     return chartProperties.xMax - (chartProperties.margins.left + chartProperties.margins.right);
 }
 
 export function getChartHeight(chartProperties) {
-    //console.log('height');
-    //console.log(chartProperties.yMax - (chartProperties.margins.top + chartProperties.margins.bottom));
     return chartProperties.yMax - (chartProperties.margins.top + chartProperties.margins.bottom);
 }
 

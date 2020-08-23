@@ -1,8 +1,7 @@
 import React from 'react';
 import './Friend.component.scss';
 import PropTypes from 'prop-types';
-import {objectPropertiesToArray} from '../../../utilsAndSettings/utils';
-import AchievementSmallComponent from '../../achievementsList/AchievementSmall/AchievementSmall.component';
+
 
 export default function FriendComponent(props) {
     const remove = () => {
@@ -42,11 +41,6 @@ export default function FriendComponent(props) {
                 <h2 className="friend-title">{props.userName}</h2>
                 <p className="friend-description">{props.userDescription}</p>
             </div>
-            <ul className="achievement-selected">
-                {objectPropertiesToArray(props.achievements).map((elem, index) =>
-                    <AchievementSmallComponent key={index} achievementId={elem.achievementID}/>
-                )}
-            </ul>
         </div>
     );
 }
@@ -56,7 +50,6 @@ FriendComponent.propTypes = {
     imgPath: PropTypes.string.isRequired,
     userName: PropTypes.string.isRequired,
     userDescription: PropTypes.string.isRequired,
-    achievements: PropTypes.object,
     removeAction: PropTypes.func,
     addAction: PropTypes.func,
     moveUpAction: PropTypes.func,
