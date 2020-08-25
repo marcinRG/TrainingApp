@@ -1,8 +1,8 @@
 import * as d3 from 'd3';
 
 export const dataStatus = {
-    OK:'OK',
-    ERROR : 'Error'
+    OK: 'OK',
+    ERROR: 'Error'
 }
 
 export function isDataValid(array) {
@@ -32,7 +32,7 @@ export function getChartHeight(chartProperties) {
 }
 
 export function getExtent(data, field, addBounds) {
-    const extent= d3.extent(data, (d) => {
+    const extent = d3.extent(data, (d) => {
         return d[field];
     });
     if (addBounds) {
@@ -157,7 +157,7 @@ export function createChart(svgElement, data, settings, chartFunction) {
     svg.selectAll('g').remove();
 
     if (data.status === dataStatus.OK) {
-        svgElement = chartFunction(svgElement,data.data,settings);
+        svgElement = chartFunction(svgElement, data.data, settings);
     }
     if (data.status === dataStatus.ERROR) {
         svgElement = createErrorMsg(svgElement, data, settings);
@@ -165,19 +165,57 @@ export function createChart(svgElement, data, settings, chartFunction) {
     return svgElement;
 }
 
-export function createPieChart(svgElement, data, settings) {
+// export function createPieChart(svgElement, data, settings) {
+//     const svg = d3.select(svgElement);
+//     const yExtent = getExtent(data, 'y');
+//     let color = d3.scaleLinear().domain(yExtent)
+//         .range(['#b88a73', '#eac99f']);
+//     const pies = d3.pie().value((d) => {
+//         return d.y;})(data);
+//     const radius = getChartHeight(settings) * 0.55 - settings.margins.left;
+//     const arc = d3.arc()
+//         .innerRadius(radius / 4)
+//         .outerRadius(radius);
+//     appendPie(svg,color,arc,settings,pies);
+//     return svgElement;
+// }
+
+export function createGroupedBarChart(svgElement, data, settings) {
     const svg = d3.select(svgElement);
-    const yExtent = getExtent(data, 'y');
-    let color = d3.scaleLinear().domain(yExtent)
-        .range(['#b88a73', '#eac99f']);
-    const pies = d3.pie().value((d) => {
-        return d.y;})(data);
-    const radius = getChartHeight(settings) * 0.55 - settings.margins.left;
-    const arc = d3.arc()
-        .innerRadius(radius / 4)
-        .outerRadius(radius);
-    appendPie(svg,color,arc,settings,pies);
-    return svgElement;
+    svg.selectAll('g').remove();
+    const domainData = Object.keys(data).sort((a, b) => {
+        if (a < b) {
+            return -1;
+        }
+        if (a > b) {
+            return 1;
+        }
+        return 0;
+    });
+
+    const scale = d3.scaleBand().domain(domainData).range([0, 400]).align(.5);
+
+    const bandwidth = scale.bandwidth();
+    console.log(bandwidth);
+
+    let axisXSvg = svg.append('g').attr('class', 'axis x');
+    axisXSvg = translateElement(axisXSvg, settings.margins.left,
+        settings.margins.top + getChartHeight(settings));
+    const axisX = d3.axisBottom(scale).tickSize(0);
+    axisXSvg.call(axisX);
+
+    const scaleY = d3.scaleBand().domain([0, 'max']).range([400, 0]).align(0);
+    let axisYSvg = svg.append('g').attr('class', 'axis y');
+    axisYSvg = translateElement(axisYSvg, settings.margins.left, settings.margins.top);
+    const axis = d3.axisLeft(scaleY).tickSize(0);
+    axisYSvg.call(axis);
+
+    let color = d3.scaleOrdinal()
+        .range(['#b88a73', '#ffbb9a', '#eac99f']);
+
+
+
+    return svg;
 }
 
 export function createAreaChart(svgElement, data, settings) {

@@ -178,11 +178,11 @@ export function UserDataProvider(props) {
     }
 
     const getLastWeekTrainings = () => {
-        const trainingsDailySummaryArray = [];
+        const lastWeekTrainingsSummary = {};
         trainings.forEach(training => {
-            trainingsDailySummaryArray.push(getMaxFromValues(training));
+            lastWeekTrainingsSummary[training.date] = getMaxFromValues(training);
         });
-        return trainingsDailySummaryArray;
+        return lastWeekTrainingsSummary;
     }
 
 

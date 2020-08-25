@@ -24,4 +24,20 @@
     height: auto;
   }
 
+  .axis {
+    path,
+    line {
+      stroke: #b88a73;
+    }
+
+    text {
+      stroke: transparent;
+      stroke-width: 0;
+      font-size: 8px;
+      font-weight: normal;
+      fill: #e9ac8f;
+    }
+  }
+
+
 }

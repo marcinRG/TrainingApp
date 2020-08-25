@@ -1,8 +1,14 @@
 import React, {useRef, useEffect, useContext} from 'react';
 import './LastWeek.component.scss';
-import {createChart, transformInputData, createPieChart, dataStatus} from '../../utilsAndSettings/d3.utils';
+import {
+    createChart,
+    transformInputData,
+    createPieChart,
+    dataStatus,
+    createGroupedBarChart
+} from '../../utilsAndSettings/d3.utils';
 import {weeklyData} from '../../data/init.data';
-import {objectPropertiesToArray} from '../../utilsAndSettings/utils';
+import {objectIsNotEmpty, objectPropertiesToArray} from '../../utilsAndSettings/utils';
 import {UserDataContext} from '../../appContext/UserDataContext';
 
 const chartProperties = {
@@ -22,15 +28,12 @@ export default function LastWeekComponent() {
     const svgRef = useRef();
 
     useEffect(() => {
-        const array = objectPropertiesToArray(weeklyData);
-        svgRef.current = createChart(svgRef.current,
-            {
-                status: dataStatus.OK,
-                data: array
-            }, chartProperties,createPieChart);
-    }, []);
+        const weeklyData = userDataContext.getLastWeekTrainings();
+        if ( objectIsNotEmpty(weeklyData)) {
+            svgRef.current = createGroupedBarChart(svgRef.current, weeklyData,chartProperties);
+        }
 
-    console.log(userDataContext.getLastWeekTrainings());
+    }, [userDataContext.trainings]);
 
     return (
         <div className="last-week-container page-container">
