@@ -7,7 +7,6 @@ import {
     dataStatus,
     createGroupedBarChart
 } from '../../utilsAndSettings/d3.utils';
-import {weeklyData} from '../../data/init.data';
 import {objectIsNotEmpty, objectPropertiesToArray} from '../../utilsAndSettings/utils';
 import {UserDataContext} from '../../appContext/UserDataContext';
 

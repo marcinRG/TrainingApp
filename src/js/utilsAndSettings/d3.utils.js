@@ -116,26 +116,6 @@ export function appendArea(svgElement, scaleX, scaleY, chartProperties, data) {
 }
 
 
-export function appendPie(svgElement, colorScale, arc, chartProperties, data) {
-    let chart = svgElement.append('g');
-    chart = translateElement(chart, chartProperties.xMax / 2, chartProperties.yMax / 2);
-    //pie slides
-    chart.selectAll().data(data).enter().append('path').attr('d', arc).attr('fill', (d) => {
-        return colorScale(d.data.y);
-    }).attr('stroke', 'white').attr('stroke-width', '1');
-    //text
-    chart.selectAll().data(data).enter().append('text').text((d) => {
-        return d.data.x
-    })
-        .attr('transform', (d) => {
-            return 'translate(' + arc.centroid(d) + ')';
-        })
-        .style('text-anchor', 'middle')
-        .style('font-size', 10)
-        .style('font-weight', 'bold');
-}
-
-
 function createErrorMsg(svgElement, data, settings) {
     const svg = d3.select(svgElement);
     const errorGroup = svg.append('g');
@@ -167,40 +147,54 @@ export function createChart(svgElement, data, settings, chartFunction) {
     return svgElement;
 }
 
-// export function createPieChart(svgElement, data, settings) {
-//     const svg = d3.select(svgElement);
-//     const yExtent = getExtent(data, 'y');
-//     let color = d3.scaleLinear().domain(yExtent)
-//         .range(['#b88a73', '#eac99f']);
-//     const pies = d3.pie().value((d) => {
-//         return d.y;})(data);
-//     const radius = getChartHeight(settings) * 0.55 - settings.margins.left;
-//     const arc = d3.arc()
-//         .innerRadius(radius / 4)
-//         .outerRadius(radius);
-//     appendPie(svg,color,arc,settings,pies);
-//     return svgElement;
-// }
-
 export function createGroupedBarChart(svgElement, data, settings) {
     const svg = d3.select(svgElement);
     const transformedData = transformData(data);
     svg.selectAll('g').remove();
 
-    const scale = d3.scaleBand().domain(transformedData.keys).range([0, 400]).align(.5);
-    const bandwidth = scale.bandwidth();
-    const scaleSmaller = d3.scaleBand().domain(Object.keys(transformedData.maxValues)).range([0,bandwidth]).align(.5).padding(.02);
-    const color = d3.scaleOrdinal()
-        .range(['#b88a73', '#ffbb9a', '#eac99f']);
+    const groupScale = d3.scaleBand().domain(transformedData.keys).range([0, 400]).align(.5).padding(.35);
+    const groupBandwidth = groupScale.bandwidth();
+
+    let chart = svg.append('g');
+    chart.attr('class', 'chart-bar');
+    chart = translateElement(chart, settings.margins.left, settings.margins.top);
+
+    const yRange = getYRange(settings);
+    const max = {...transformedData.maxValues};
+
 
     transformedData.values.forEach(value => {
-        console.log(value.data);
-    })
+
+        let groupPos = groupScale(value.date);
+
+        const subGroupKeys = Object.keys(value.data);
+
+        const subGroupScale = d3.scaleBand().domain(subGroupKeys).range([0, groupBandwidth]).align(.5).padding(.05);
+        const subGroupColors = d3.scaleOrdinal().domain(subGroupKeys).range(['#b88a73', '#ffbb9a', '#eac99f']);
+        let group = chart.append('g');
+
+        group.attr('class', `group-${value.date}`);
+        group.selectAll('rect').data(subGroupKeys).enter().append('rect').attr('height', (d) => {
+
+            let scaleY = d3.scaleLinear().domain([0, max[d]]).range(yRange);
+            return getChartHeight(settings) - scaleY(value.data[d]);
+        })
+            .attr('width', subGroupScale.bandwidth())
+            .attr('fill', (d) => subGroupColors(d))
+            .attr('x', (d) => {
+                return (subGroupScale(d) + groupPos)
+            })
+            .attr('y', (d) => {
+                let scaleY = d3.scaleLinear().domain([0, max[d]]).range(yRange);
+                return (scaleY(value.data[d]));
+            });
+
+    });
 
     let axisXSvg = svg.append('g').attr('class', 'axis x');
     axisXSvg = translateElement(axisXSvg, settings.margins.left,
         settings.margins.top + getChartHeight(settings));
-    const axisX = d3.axisBottom(scale).tickSize(0);
+    const axisX = d3.axisBottom(groupScale).tickSize(0);
     axisXSvg.call(axisX);
 
     const scaleY = d3.scaleBand().domain([0, 'max']).range([400, 0]).align(0);
@@ -208,8 +202,6 @@ export function createGroupedBarChart(svgElement, data, settings) {
     axisYSvg = translateElement(axisYSvg, settings.margins.left, settings.margins.top);
     const axis = d3.axisLeft(scaleY).tickSize(0);
     axisYSvg.call(axis);
-
-
     return svg;
 }
 
@@ -226,7 +218,7 @@ function sortStr(str1, str2) {
 function transformData(data) {
     if (data) {
         const keys = (Object.keys(data)).sort(sortStr);
-        if (keys.length>0) {
+        if (keys.length > 0) {
             let newData = {
                 keys: keys,
                 values: [],
