@@ -115,6 +115,7 @@ export function appendArea(svgElement, scaleX, scaleY, chartProperties, data) {
         .attr('stroke', 'transparent');
 }
 
+
 export function appendPie(svgElement, colorScale, arc, chartProperties, data) {
     let chart = svgElement.append('g');
     chart = translateElement(chart, chartProperties.xMax / 2, chartProperties.yMax / 2);
@@ -152,6 +153,7 @@ function createErrorMsg(svgElement, data, settings) {
     return svgElement;
 }
 
+
 export function createChart(svgElement, data, settings, chartFunction) {
     const svg = d3.select(svgElement);
     svg.selectAll('g').remove();
@@ -182,21 +184,18 @@ export function createChart(svgElement, data, settings, chartFunction) {
 
 export function createGroupedBarChart(svgElement, data, settings) {
     const svg = d3.select(svgElement);
+    const transformedData = transformData(data);
     svg.selectAll('g').remove();
-    const domainData = Object.keys(data).sort((a, b) => {
-        if (a < b) {
-            return -1;
-        }
-        if (a > b) {
-            return 1;
-        }
-        return 0;
-    });
 
-    const scale = d3.scaleBand().domain(domainData).range([0, 400]).align(.5);
-
+    const scale = d3.scaleBand().domain(transformedData.keys).range([0, 400]).align(.5);
     const bandwidth = scale.bandwidth();
-    console.log(bandwidth);
+    const scaleSmaller = d3.scaleBand().domain(Object.keys(transformedData.maxValues)).range([0,bandwidth]).align(.5).padding(.02);
+    const color = d3.scaleOrdinal()
+        .range(['#b88a73', '#ffbb9a', '#eac99f']);
+
+    transformedData.values.forEach(value => {
+        console.log(value.data);
+    })
 
     let axisXSvg = svg.append('g').attr('class', 'axis x');
     axisXSvg = translateElement(axisXSvg, settings.margins.left,
@@ -210,13 +209,58 @@ export function createGroupedBarChart(svgElement, data, settings) {
     const axis = d3.axisLeft(scaleY).tickSize(0);
     axisYSvg.call(axis);
 
-    let color = d3.scaleOrdinal()
-        .range(['#b88a73', '#ffbb9a', '#eac99f']);
-
-
 
     return svg;
 }
+
+function sortStr(str1, str2) {
+    if (str1 < str2) {
+        return -1;
+    }
+    if (str1 > str2) {
+        return 1;
+    }
+    return 0;
+}
+
+function transformData(data) {
+    if (data) {
+        const keys = (Object.keys(data)).sort(sortStr);
+        if (keys.length>0) {
+            let newData = {
+                keys: keys,
+                values: [],
+                maxValues: {}
+            };
+            keys.forEach(key => {
+                const obj = {
+                    date: key,
+                    data: data[key]
+                };
+                newData.values.push(obj);
+                newData.maxValues = setMaxValues(newData.maxValues, data[key]);
+            });
+            return newData;
+        }
+    }
+    return null;
+}
+
+function setMaxValues(maxValues, data) {
+    const obj = {...maxValues};
+    const keys = Object.keys(data);
+    keys.forEach(key => {
+        if (obj.hasOwnProperty(key)) {
+            if (data[key] > obj[key]) {
+                obj[key] = data[key];
+            }
+        } else {
+            obj[key] = data[key];
+        }
+    });
+    return obj;
+}
+
 
 export function createAreaChart(svgElement, data, settings) {
     const svg = d3.select(svgElement);
