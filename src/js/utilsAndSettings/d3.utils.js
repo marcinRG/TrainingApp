@@ -197,10 +197,12 @@ export function createGroupedBarChart(svgElement, data, settings) {
     const axisX = d3.axisBottom(groupScale).tickSize(0);
     axisXSvg.call(axisX);
 
-    const scaleY = d3.scaleBand().domain([0, 'max']).range([400, 0]).align(0);
+    const scaleY = d3.scaleLinear().domain([0,1]).range(yRange);
     let axisYSvg = svg.append('g').attr('class', 'axis y');
+
+    const formatPercent = d3.format('.0%');
     axisYSvg = translateElement(axisYSvg, settings.margins.left, settings.margins.top);
-    const axis = d3.axisLeft(scaleY).tickSize(0);
+    const axis = d3.axisLeft(scaleY).tickSize(0).ticks(2).tickFormat(formatPercent);
     axisYSvg.call(axis);
     return svg;
 }

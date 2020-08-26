@@ -4,12 +4,16 @@
 
 .last-week-container {
 
+  padding: 30px 10px;
+
+
   .last-week-title {
     margin-bottom: 2em;
   }
 
   .chart-component {
     width: 70%;
+    min-height: 720px;
     margin: 1em auto;
     text-align: center;
   }
